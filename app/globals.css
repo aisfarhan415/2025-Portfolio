@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;400&family=Castoro+Titling:wght@400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .lexend {
-  font-family: 'Lexend Exa', sans-serif;
+  font-family: "Lexend Exa", sans-serif;
 }
 
 .castoro {
-  font-family: 'Castoro Titling', serif;
+  font-family: "Castoro Titling", serif;
 }
