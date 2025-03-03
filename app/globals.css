@@ -11,3 +11,6 @@
 .castoro {
   font-family: "Castoro Titling", serif;
 }
+html {
+  scroll-behavior: smooth;
+}
