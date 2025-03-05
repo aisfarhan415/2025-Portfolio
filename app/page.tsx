@@ -22,7 +22,6 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-background text-gray-900 overflow-hidden scroll-smooth">
-      {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center w-[788px] relative mb-20 h-[982px]">
         <Image
           src="/assets/hero_name_blue.svg"
@@ -53,7 +52,6 @@ export default function Home() {
           style={{ left: "64px", top: "677px" }}
         />
 
-        {/* Animated Floating Images */}
         <div className="absolute inset-0 pointer-events-none">
           <motion.img
             src="/assets/image.svg"
@@ -88,7 +86,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* New Section */}
       <section className="flex flex-col items-center text-right w-full min-h-[1184px] bg-blue relative py-20 px-[52px]">
         <div className="flex justify-between items-end w-full">
           <div className="flex flex-col justify-between h-[400px]">
@@ -119,9 +116,7 @@ export default function Home() {
           </motion.h2>
         </div>
 
-        {/* SECTION FOTO */}
         <div className="grid grid-cols-3 gap-8 mt-12 w-full">
-          {/* Foto 1 */}
           <div className="w-full group">
             <motion.img
               src="/assets/creation_1.svg"
@@ -138,7 +133,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Foto 2 */}
           <div className="w-full group">
             <motion.img
               src="/assets/creation_2.svg"
@@ -155,7 +149,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Foto 3 */}
           <div className="w-full group">
             <motion.img
               src="/assets/creation_3.svg"
@@ -174,7 +167,6 @@ export default function Home() {
         </div>
       </section>
       <section className="w-full py-20 bg-background text-black flex flex-col items-center">
-        {/* Title & Subtitle */}
         <motion.div
           className="flex justify-between items-end mb-12 w-full p-[52px]"
           initial="hidden"
@@ -193,7 +185,6 @@ export default function Home() {
             },
           }}
         >
-          {/* Judul */}
           <motion.h2
             className="text-9xl font-bold text-left lexend w-[788px]"
             variants={{
@@ -214,7 +205,6 @@ export default function Home() {
             From Viewers to Believers
           </motion.h2>
 
-          {/* Sub Judul */}
           <motion.p
             className="text-2xl lexend font-light text-right w-[226px]"
             variants={{
@@ -245,7 +235,6 @@ export default function Home() {
           className="self-start text-left mx-auto p-[52px] w-full"
         >
           <div className="space-y-3">
-            {/* Foto + Nama Reviewer */}
             <div className="flex flex-row items-center text-center space-x-6">
               <motion.img
                 key={reviews[currentIndex].photo}
@@ -277,16 +266,12 @@ export default function Home() {
                 </motion.p>
               </div>
             </div>
-
-            {/* Teks Review */}
             <TypingText
               key={reviews[currentIndex].text}
               text={reviews[currentIndex].text}
               speed={5}
             />
           </div>
-
-          {/* Navigation Buttons */}
           <ReviewNavigation />
         </motion.div>
       </section>
@@ -302,7 +287,6 @@ export default function Home() {
           </p>
         </div>
 
-        {/* TEKS FARHAN DENGAN BG TILE & GERAK SMOOTH */}
         <motion.p
           className="text-[240px] font-bold lexend-exa bg-clip-text text-transparent"
           animate={{ backgroundPositionX: bgX }}
