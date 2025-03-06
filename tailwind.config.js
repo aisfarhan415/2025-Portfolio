@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -13,6 +14,10 @@ module.exports = {
         white: "#FFFFFF",
         black: "#000000",
         background: "#FFFFFF",
+      },
+      fontFamily: {
+        lexend: ["Lexend Exa", ...fontFamily.sans],
+        castoro: ["Castoro Titling", ...fontFamily.serif],
       },
       screens: {
         sm: "640px",

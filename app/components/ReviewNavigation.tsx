@@ -9,7 +9,7 @@ const ReviewNavigation = () => {
     <div className="flex space-x-4 mt-6">
       <motion.button
         onClick={prevReview}
-        className="bg-gray-200 rounded-lg hover:bg-gray-300 transition flex items-center gap-3"
+        className="transition flex items-center gap-3"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
@@ -24,7 +24,7 @@ const ReviewNavigation = () => {
 
       <motion.button
         onClick={nextReview}
-        className="bg-gray-200 rounded-lg hover:bg-gray-300 transition flex items-center gap-3"
+        className="transition flex items-center gap-3"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >

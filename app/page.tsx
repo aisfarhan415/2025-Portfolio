@@ -1,4 +1,5 @@
 "use client";
+import Navbar from './components/navbar';
 import { useState } from "react";
 import "./globals.css";
 import { useReviewStore } from "./components/reviewStore";
@@ -8,6 +9,7 @@ import Image from "next/image";
 import { reviews } from "./reviews";
 import ReviewNavigation from "./components/ReviewNavigation";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function Home() {
   const { currentIndex, reviews, nextReview, prevReview } = useReviewStore();
@@ -22,8 +24,10 @@ export default function Home() {
   };
 
   return (
+    <div>
+    <Navbar />
     <main className="flex flex-col items-center justify-center min-h-screen bg-background text-gray-900 overflow-hidden scroll-smooth">
-      <section className="flex flex-col items-center justify-center text-center w-[788px] relative mb-20 h-[982px]">
+      <section id="hero" className="flex flex-col items-center justify-center text-center w-[788px] relative mb-20 h-[982px]">
         <Image
           src="/assets/hero_name_blue.svg"
           alt="Outlined Text"
@@ -87,7 +91,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col items-center text-right w-full min-h-[1184px] bg-blue relative py-20 px-[52px]">
+      <section id="projects" className="flex flex-col items-center text-right w-full min-h-[1184px] bg-blue relative py-20 px-[52px]">
         <div className="flex justify-between items-end w-full">
           <div className="flex flex-col justify-between h-[400px]">
             <motion.div
@@ -167,7 +171,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="w-full py-20 bg-background text-black flex flex-col items-center">
+      <section id="testimonials" className="w-full py-20 bg-background text-black flex flex-col items-center">
         <motion.div
           className="flex justify-between items-end mb-12 w-full p-[52px]"
           initial="hidden"
@@ -277,7 +281,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <footer
+      <footer id="contact"
         className="bg-black text-white flex flex-col items-center justify-between h-[878px] w-full px-[52px] py-[52px] overflow-hidden"
         onMouseMove={handleMouseMove}
       >
@@ -305,6 +309,8 @@ export default function Home() {
         </motion.p>
       </footer>
       <SpeedInsights />
+      <Analytics />
     </main>
+    </div>
   );
 }
