@@ -838,10 +838,6 @@ video {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
-.text-blue{
-  --tw-text-opacity: 1;
-  color: rgb(25 41 254 / var(--tw-text-opacity, 1));
-}
 .text-gray-500{
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
@@ -912,10 +908,6 @@ html {
 .hover\:bg-gray-300:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1));
-}
-.hover\:text-blue:hover{
-  --tw-text-opacity: 1;
-  color: rgb(25 41 254 / var(--tw-text-opacity, 1));
 }
 .group:hover .group-hover\:scale-105{
   --tw-scale-x: 1.05;
