@@ -1,9 +1,9 @@
 // 'use client';
 
-// import { useState } from 'react';
+// import { useState, useEffect } from 'react';
 // import { motion } from 'framer-motion';
 // import Link from 'next/link';
-// // import { cn } from '@/lib/utils';
+// import { cn } from '@/lib/utils'; // Make sure this function actually exists
 
 // const navItems = [
 //   { name: 'Home', href: '#home' },
@@ -16,18 +16,14 @@
 // export default function Navbar() {
 //   const [isScrolled, setIsScrolled] = useState(false);
 
-//   // Handle navbar scroll effect
-//   const handleScroll = () => {
-//     if (window.scrollY > 50) {
-//       setIsScrolled(true);
-//     } else {
-//       setIsScrolled(false);
-//     }
-//   };
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setIsScrolled(window.scrollY > 50);
+//     };
 
-//   if (typeof window !== 'undefined') {
 //     window.addEventListener('scroll', handleScroll);
-//   }
+//     return () => window.removeEventListener('scroll', handleScroll); // Cleanup to prevent memory leaks
+//   }, []);
 
 //   return (
 //     <motion.nav
@@ -40,19 +36,19 @@
 //       transition={{ duration: 0.5, ease: 'easeOut' }}
 //     >
 //       {/* Logo */}
-//       <Link href="/">
-//         <a className="text-2xl font-bold lexend text-blue">FARHAN</a>
+//       <Link href="/" className="text-2xl font-bold lexend text-blue-500">
+//         FARHAN
 //       </Link>
 
 //       {/* Menu */}
 //       <div className="flex space-x-8">
 //         {navItems.map((item, index) => (
-//           <Link key={index} href={item.href}>
-//             <a
-//               className="text-lg font-light text-gray-900 hover:text-blue transition-colors duration-300"
-//             >
-//               {item.name}
-//             </a>
+//           <Link
+//             key={index}
+//             href={item.href}
+//             className="text-lg font-light text-gray-900 hover:text-blue-500 transition-colors duration-300"
+//           >
+//             {item.name}
 //           </Link>
 //         ))}
 //       </div>
