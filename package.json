@@ -1,8 +1,9 @@
 {
   "name": "my-portfolio",
   "version": "0.1.0",
-  "private": true, 
+  "private": true,
   "dependencies": {
+    "@vercel/speed-insights": "^1.2.0",
     "framer-motion": "^12.4.7",
     "google-fonts": "^1.0.0",
     "iconsax-react": "^0.0.8",

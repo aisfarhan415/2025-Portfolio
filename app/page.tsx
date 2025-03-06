@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { reviews } from "./reviews";
 import ReviewNavigation from "./components/ReviewNavigation";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Home() {
   const { currentIndex, reviews, nextReview, prevReview } = useReviewStore();
@@ -99,7 +100,7 @@ export default function Home() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              whileHover={{ rotate: [0, -2, 2, -2, 0] }} 
+              whileHover={{ rotate: [0, -2, 2, -2, 0] }}
             >
               Blending the past with the future, one artwork at a time.
             </motion.p>
@@ -303,6 +304,7 @@ export default function Home() {
           FARHAN
         </motion.p>
       </footer>
+      <SpeedInsights />
     </main>
   );
 }
