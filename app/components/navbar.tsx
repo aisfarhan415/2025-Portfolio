@@ -18,6 +18,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isProjectsActive, setIsProjectsActive] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 50);
@@ -35,7 +36,7 @@ export default function Navbar() {
 
     setActiveSection(currentSection);
     setIsHeroActive(currentSection === "#hero");
-    setIsProjectsActive(currentSection === "#projects"); // Cek apakah lagi di Projects
+    setIsProjectsActive(currentSection === "#projects");
   };
 
   useEffect(() => {
@@ -60,7 +61,6 @@ export default function Navbar() {
       }}
     >
       <div className="flex items-center gap-x-12">
-        {/* Logo ganti warna dengan animasi */}
         <Link href="#hero" className="flex items-center gap-2">
           <motion.div
             whileHover={{
@@ -72,22 +72,30 @@ export default function Navbar() {
           >
             <AnimatePresence mode="wait">
               <motion.img
-                key={isHeroActive ? "favicon" : "favicon_blue"} // Biar Framer Motion tau ini berubah
-                src={isHeroActive ? "assets/favicon.svg" : "assets/favicon_blue.svg"}
+                key={isHeroActive ? "favicon" : "favicon_blue"}
+                src={
+                  isHeroActive
+                    ? "assets/favicon.svg"
+                    : "assets/favicon_blue.svg"
+                }
                 alt="Logo"
                 width={82}
                 height={63}
                 className="absolute top-0 left-0"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1, transition: { duration: 0.3 } }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  transition: { duration: 0.3 },
+                }}
                 exit={{ opacity: 0, scale: 1.2, transition: { duration: 0.3 } }}
               />
             </AnimatePresence>
           </motion.div>
         </Link>
 
-        {/* Menu */}
-        <div className="flex space-x-6">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-6">
           {navItems.map((item, index) => (
             <motion.div
               key={index}
@@ -117,7 +125,67 @@ export default function Navbar() {
             </motion.div>
           ))}
         </div>
+
+        {/* Burger Menu */}
+        <button
+          className={cn(
+            "md:hidden p-2 transition-colors duration-300",
+            isProjectsActive ? "text-blue" : "text-white"
+          )}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={isOpen ? "close" : "hamburger"}
+              src={isOpen ? "assets/close.svg" : "assets/hamburger.svg"}
+              alt={isOpen ? "Close Menu" : "Open Menu"}
+              className="w-6 h-6"
+              initial={{ rotate: 0, opacity: 0 }}
+              animate={{ rotate: 180, opacity: 1 }}
+              exit={{ rotate: -180, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              style={{
+                filter: isProjectsActive
+                  ? "invert(18%) sepia(91%) saturate(749%) hue-rotate(190deg) brightness(95%) contrast(90%)"
+                  : "none",
+              }}
+            />
+          </AnimatePresence>
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg rounded-[12px] flex flex-col items-center py-4 px-6 mt-[12px]"
+          >
+            {navItems.map((item, index) => (
+              <motion.div
+                key={index}
+                className="relative group w-full text-center"
+                whileHover={{
+                  scale: 1.1,
+                  rotate: 3,
+                  transition: { duration: 0.2 },
+                }}
+              >
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+                <Link
+                  href={item.href}
+                  className="relative block py-3 w-full text-lg font-medium font-lexend transition-colors duration-300 rounded-full text-blue hover:text-blue-600"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
