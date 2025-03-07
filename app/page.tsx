@@ -209,132 +209,133 @@ export default function Home() {
         </section>
 
         <section
-          id="testimonials"
-          className="w-full py-20 bg-background text-black flex flex-col items-center"
+      id="testimonials"
+      className="w-full py-20 bg-background text-black flex flex-col items-center px-6 sm:px-12 md:px-16 lg:px-20"
+    >
+      <motion.div
+        className="flex flex-col lg:flex-row justify-between items-end mb-12 w-full"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0, y: 50, scale: 0.95 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+              duration: 1.2,
+              ease: "easeOut",
+              staggerChildren: 0.4,
+            },
+          },
+        }}
+      >
+        <motion.h2
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-left lexend w-full lg:w-[788px]"
+          variants={{
+            hidden: { opacity: 0, x: -100, skewX: -10 },
+            visible: {
+              opacity: 1,
+              x: 0,
+              skewX: 0,
+              transition: { duration: 1.2, ease: "backOut" },
+            },
+          }}
+          whileHover={{
+            scale: 1.08,
+            textShadow: "0px 0px 10px rgba(255, 255, 255, 0.8)",
+            transition: { duration: 0.3 },
+          }}
         >
-          <motion.div
-            className="flex justify-between items-end mb-12 w-full p-[52px]"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0, y: 50, scale: 0.95 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                transition: {
-                  duration: 1.2,
-                  ease: "easeOut",
-                  staggerChildren: 0.4,
-                },
-              },
-            }}
-          >
-            <motion.h2
-              className="text-9xl font-bold text-left lexend w-[788px]"
-              variants={{
-                hidden: { opacity: 0, x: -100, skewX: -10 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  skewX: 0,
-                  transition: { duration: 1.2, ease: "backOut" },
-                },
-              }}
-              whileHover={{
-                scale: 1.08,
-                textShadow: "0px 0px 10px rgba(255, 255, 255, 0.8)",
-                transition: { duration: 0.3 },
-              }}
-            >
-              From Viewers to Believers
-            </motion.h2>
+          From Viewers to Believers
+        </motion.h2>
 
-            <motion.p
-              className="text-2xl lexend font-light text-right w-[226px]"
-              variants={{
-                hidden: { opacity: 0, x: 100, rotate: -10 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  rotate: 0,
-                  transition: { duration: 1, ease: "backOut" },
-                },
-              }}
-              whileHover={{
-                rotate: [0, -5, 5, -5, 0],
-                scale: 1.05,
-                transition: { duration: 0.5 },
-              }}
-            >
-              When art speaks, people listen—here’s what they say.
-            </motion.p>
-          </motion.div>
+        <motion.p
+          className="text-lg sm:text-xl md:text-2xl lexend font-light text-left lg:text-right w-full lg:w-[226px] mt-6 lg:mt-0"
+          variants={{
+            hidden: { opacity: 0, x: 100, rotate: -10 },
+            visible: {
+              opacity: 1,
+              x: 0,
+              rotate: 0,
+              transition: { duration: 1, ease: "backOut" },
+            },
+          }}
+          whileHover={{
+            rotate: [0, -5, 5, -5, 0],
+            scale: 1.05,
+            transition: { duration: 0.5 },
+          }}
+        >
+          When art speaks, people listen—here’s what they say.
+        </motion.p>
+      </motion.div>
 
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="self-start text-left mx-auto p-[52px] w-full"
-          >
-            <div className="space-y-3">
-              <div className="flex flex-row items-center text-center space-x-6">
-                <motion.img
-                  key={reviews[currentIndex].photo}
-                  src={reviews[currentIndex].photo}
-                  alt="Reviewer Photo"
-                  className="w-[134px] h-[134px] object-cover rounded-full border-4 border-white shadow-lg"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                />
-                <div className="flex flex-col items-left text-left">
-                  <motion.h4
-                    key={reviews[currentIndex].name}
-                    className="text-2xl font-bold lexend text-black"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {reviews[currentIndex].name}
-                  </motion.h4>
-                  <motion.p
-                    key={reviews[currentIndex].position}
-                    className="text-lg font-light lexend text-gray-500"
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {reviews[currentIndex].position}
-                  </motion.p>
-                </div>
-              </div>
-              <TypingText
-                key={reviews[currentIndex].text}
-                text={reviews[currentIndex].text}
-                speed={5}
-              />
+      <motion.div
+        key={currentIndex}
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 50 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="text-left mx-auto w-full"
+      >
+            <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row items-start text-left sm:items-start sm:text-left space-y-6 sm:space-y-0 sm:space-x-6">
+            <motion.img
+              key={reviews[currentIndex].photo}
+              src={reviews[currentIndex].photo}
+              alt="Reviewer Photo"
+              className="w-[100px] h-[100px] sm:w-[134px] sm:h-[134px] object-cover rounded-full border-4 border-white shadow-lg"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            />
+            <div className="flex flex-col items-start">
+              <motion.h4
+                key={reviews[currentIndex].name}
+                className="text-xl sm:text-2xl font-bold lexend text-black"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {reviews[currentIndex].name}
+              </motion.h4>
+              <motion.p
+                key={reviews[currentIndex].position}
+                className="text-sm sm:text-lg font-light lexend text-gray-500"
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {reviews[currentIndex].position}
+              </motion.p>
             </div>
-            <ReviewNavigation />
-          </motion.div>
-        </section>
+          </div>
 
-        <footer
+          <TypingText
+            key={reviews[currentIndex].text}
+            text={reviews[currentIndex].text}
+            speed={5}
+          />
+        </div>
+        <ReviewNavigation />
+      </motion.div>
+    </section>
+
+    <footer
           id="contact"
-          className="bg-black text-white flex flex-col items-center justify-between h-[878px] w-full px-[52px] py-[52px] overflow-hidden"
+          className="bg-black text-white flex flex-col items-center justify-between min-h-[400px] md:min-h-[600px] lg:h-[878px] w-full px-6 sm:px-12 md:px-16 lg:px-[52px] py-12 sm:py-16 md:py-20 lg:py-[52px] overflow-hidden"
           onMouseMove={handleMouseMove}
         >
           <div className="space-y-2 flex flex-col items-center justify-center text-center">
-            <p className="text-[20px] font-light lexend">Contact me at</p>
-            <p className="text-[20px] font-light lexend">
+            <p className="text-lg sm:text-xl md:text-2xl font-light lexend">Contact me at</p>
+            <p className="text-lg sm:text-xl md:text-2xl font-light lexend">
               aisfarhan.professional@gmail.com
             </p>
           </div>
 
           <motion.p
-            className="text-[240px] font-bold lexend-exa bg-clip-text text-transparent"
+            className="text-[72px] sm:text-[120px] md:text-[180px] lg:text-[240px] font-bold lexend-exa bg-clip-text text-transparent"
             animate={{ backgroundPositionX: bgX }}
             transition={{ ease: "easeOut", duration: 0.2 }}
             style={{
@@ -349,6 +350,7 @@ export default function Home() {
             FARHAN
           </motion.p>
         </footer>
+
         <SpeedInsights />
         <Analytics />
       </main>
