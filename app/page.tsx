@@ -124,30 +124,9 @@ export default function Home() {
           id="projects"
           className="flex flex-col items-center text-right w-full min-h-[1184px] bg-blue relative py-20 px-[52px]"
         >
-          <div className="flex justify-between items-end w-full">
-            <div className="flex flex-col justify-between h-[400px]">
-              <motion.div
-                className="w-40 h-40 bg-white rounded-full"
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <motion.p
-                className="text-xl text-white lexend text-left font-light w-[226px]"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                whileHover={{ rotate: [0, -2, 2, -2, 0] }}
-              >
-                Blending the past with the future, one artwork at a time.
-              </motion.p>
-            </div>
-
+          <div className="flex flex-col lg:flex-row justify-between items-start w-full">
             <motion.h2
-              className="text-9xl font-bold lexend text-white text-right w-[788px] self-end"
+              className="text-4xl sm:text-5xl lg:text-8xl font-bold lexend text-left lg:text-left text-white w-full lg:w-[630px] mb-8 lg:mb-0"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
@@ -155,9 +134,30 @@ export default function Home() {
             >
               Timeless Creations, Modern Vision
             </motion.h2>
+
+            <div className="flex flex-col justify-between h-[400px] mb-8 lg:mb-0 w-full items-start lg:items-end lg:space-y-[32px] md:space-y-[16px] sm:space-y-[8px]">
+              <motion.p
+                className="text-xl text-white lexend font-light w-full sm:w-[226px] lg:text-right text-left sm:text-left"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                whileHover={{ rotate: [0, -2, 2, -2, 0] }}
+              >
+                Blending the past with the future, one artwork at a time.
+              </motion.p>
+              <motion.div
+                className="w-40 h-40 bg-white rounded-full animate-pulse"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-8 mt-12 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 w-full">
             <div className="w-full group">
               <motion.img
                 src="/assets/creation_1.svg"
@@ -207,6 +207,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+
         <section
           id="testimonials"
           className="w-full py-20 bg-background text-black flex flex-col items-center"

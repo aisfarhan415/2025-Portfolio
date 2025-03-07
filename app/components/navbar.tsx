@@ -155,6 +155,33 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
+      <button
+        className={cn(
+          "md:hidden p-2 transition-colors duration-300",
+          isProjectsActive ? "text-blue" : "text-white"
+        )}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={isOpen ? "close" : "hamburger"}
+            src={isOpen ? "assets/close.svg" : "assets/hamburger.svg"}
+            alt={isOpen ? "Close Menu" : "Open Menu"}
+            className="w-6 h-6"
+            initial={{ rotate: 0, opacity: 0 }}
+            animate={{ rotate: 180, opacity: 1 }}
+            exit={{ rotate: -180, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            style={{
+              filter: isProjectsActive
+                ? "invert(18%) sepia(91%) saturate(749%) hue-rotate(190deg) brightness(95%) contrast(90%)"
+                : "none",
+            }}
+          />
+        </AnimatePresence>
+      </button>
+
+      {/* Mobile Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
