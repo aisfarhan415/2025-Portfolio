@@ -62,7 +62,7 @@ const CustomCursor = () => {
 
   return (
     <motion.div
-      className="fixed pointer-events-none z-50"
+      className="fixed pointer-events-none z-50 md:block hidden"
       animate={{
         x: position.x - 10,
         y: position.y - 10,

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { cn } from "../../src/lib/utils";
@@ -20,7 +20,7 @@ export default function Navbar() {
   const [isProjectsActive, setIsProjectsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
 
     let currentSection = "";
@@ -34,15 +34,17 @@ export default function Navbar() {
       }
     });
 
-    setActiveSection(currentSection);
+    setActiveSection((prev) =>
+      prev !== currentSection ? currentSection : prev
+    );
     setIsHeroActive(currentSection === "#hero");
     setIsProjectsActive(currentSection === "#projects");
-  };
+  }, []); // ✅ useCallback biar gak bikin fungsi baru terus
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]); // ✅ Sekarang `handleScroll` gak akan berubah tiap render
 
   return (
     <motion.div
@@ -53,7 +55,7 @@ export default function Navbar() {
       }}
       whileHover={{ y: 0 }}
     >
-      <div className="w-[40px]" />
+      <div className="w-[40px] hidden md:block" />
       {/* Navbar */}
       <motion.nav
         className={cn(
@@ -131,6 +133,7 @@ export default function Navbar() {
               </motion.div>
             ))}
           </div>
+
           {/* Burger Menu */}
           <button
             className={cn(
@@ -149,23 +152,19 @@ export default function Navbar() {
                 animate={{ rotate: 180, opacity: 1 }}
                 exit={{ rotate: -180, opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                style={{
-                  filter: isProjectsActive
-                    ? "invert(18%) sepia(91%) saturate(749%) hue-rotate(190deg) brightness(95%) contrast(90%)"
-                    : "none",
-                }}
               />
             </AnimatePresence>
           </button>
         </div>
-        {/* Mobile Dropdown Menu */}
+
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg rounded-[12px] flex flex-col items-center py-4 px-6 mt-[12px]"
+              className="md:hidden absolute top-full left-0 right-0 mx-auto max-w-[280px] bg-white shadow-lg rounded-[12px] flex flex-col items-center py-4 px-6 mt-[12px]"
             >
               {navItems.map((item, index) => (
                 <motion.div
@@ -186,36 +185,6 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-
-              {/* LinkedIn & Email (Masuk ke Dropdown di Mobile) */}
-              <div className="flex flex-row items-center gap-3 mt-4">
-                {/* Email */}
-                <Link
-                  href="mailto:aisfarhan.professional@gmail.com"
-                  target="_blank"
-                >
-                  <Image
-                    src="/assets/mail.svg"
-                    alt="Email"
-                    width={32}
-                    height={32}
-                    className="hover:scale-110 transition-transform duration-300"
-                  />
-                </Link>
-                {/* LinkedIn */}
-                <Link
-                  href="https://www.linkedin.com/in/aisfarhan/"
-                  target="_blank"
-                >
-                  <Image
-                    src="/assets/linkedin_logo.svg"
-                    alt="LinkedIn"
-                    width={32}
-                    height={32}
-                    className="hover:scale-110 transition-transform duration-300"
-                  />
-                </Link>
-              </div>
             </motion.div>
           )}
         </AnimatePresence>
