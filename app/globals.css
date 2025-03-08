@@ -11,6 +11,18 @@
 .castoro {
   font-family: "Castoro Titling", serif;
 }
+
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  cursor: url("/assets/cursor.svg") 8 8, auto;
+  transition: cursor 0.3s ease-in-out;
+}
+
+#projects,
+#contact {
+  cursor: url("/assets/cursor-white.svg") 8 8, auto;
+  transition: cursor 0.3s ease-in-out;
 }
