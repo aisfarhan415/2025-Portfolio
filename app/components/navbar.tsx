@@ -185,6 +185,36 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+
+              {/* Email and LinkedIn Button */}
+              <div className="flex flex-row items-center gap-3 mt-4">
+                {/* Email */}
+                <Link
+                  href="mailto:aisfarhan.professional@gmail.com"
+                  target="_blank"
+                >
+                  <Image
+                    src="/assets/mail.svg"
+                    alt="Email"
+                    width={32}
+                    height={32}
+                    className="hover:scale-110 transition-transform duration-300"
+                  />
+                </Link>
+                {/* LinkedIn */}
+                <Link
+                  href="https://www.linkedin.com/in/aisfarhan/"
+                  target="_blank"
+                >
+                  <Image
+                    src="/assets/linkedin_logo.svg"
+                    alt="LinkedIn"
+                    width={32}
+                    height={32}
+                    className="hover:scale-110 transition-transform duration-300"
+                  />
+                </Link>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
