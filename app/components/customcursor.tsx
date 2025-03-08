@@ -79,6 +79,7 @@ const CustomCursor = () => {
         borderRadius: "50%",
         position: "fixed",
         transform: "translate(-50%, -50%)",
+        zIndex: 90,
         ...cursorStyle,
       }}
     />
