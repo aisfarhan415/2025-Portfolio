@@ -23,7 +23,7 @@ const TypingText: React.FC<TypingTextProps> = ({ text, speed = 30 }) => {
   }, [index, text, speed]);
 
   return (
-    <p className="text-3xl lexend font-regular text-black leading-relaxed">
+    <p className="lg:text-3xl md:text-xl sm:text-sm lexend font-regular text-black leading-relaxed">
       {displayText}
       <motion.span
         className="inline-block w-2 h-6 bg-black ml-1"
