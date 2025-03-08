@@ -6,7 +6,6 @@ import { useReviewStore } from "./components/reviewStore";
 import TypingText from "./components/TypingText";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { reviews } from "./reviews";
 import ReviewNavigation from "./components/ReviewNavigation";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -80,8 +79,8 @@ export default function Home() {
               alt="Placeholder 1"
               className="absolute object-cover z-30"
               style={{
-                left: "0%",
-                top: "42%",
+                left: "12%",
+                top: "36%",
                 width: "10vw",
                 minWidth: "100px",
                 height: "auto",
@@ -108,7 +107,7 @@ export default function Home() {
               alt="Placeholder 3"
               className="absolute object-cover z-30"
               style={{
-                left: "76%",
+                left: "64%",
                 top: "74%",
                 width: "15vw",
                 minWidth: "100px",
