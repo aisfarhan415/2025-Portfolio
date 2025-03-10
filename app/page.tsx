@@ -139,38 +139,38 @@ export default function Home() {
           id="about"
           className="w-full bg-black text-white flex flex-col items-center p-[52px] sm:p-8 lg:p-14 space-y-8 lg:space-y-14"
         >
-          <div className="w-[286px] lg:w-full h-[242px] lg:max-w-[1336px] lg:h-[813px] mx-auto overflow-hidden relative">
-            <div className="w-full lg:max-w-[1336px] h-[242px] lg:h-[796px] mx-auto overflow-hidden rounded-[42px] relative">
+          <div className="w-[286px] md:w-fit md:h-[400px] lg:w-fit h-[260px] lg:max-w-[1336px] lg:h-[813px] mx-auto overflow-hidden relative">
+            <div className="relative w-full md:h-fit lg:max-w-[1062px] h-[242px] lg:h-[796px] mx-auto overflow-hidden rounded-[12px] lg:rounded-[42px] flex items-center justify-center">
               <img
                 src="/assets/about-me-back.svg"
                 alt="About Text"
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto scale-50 lg:scale-150"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 md:pt-[130px] -translate-y-1/2 w-[500px] h-auto z-20 scale-50  md:scale-90 lg:scale-150"
               />
 
               <img
                 src="/assets/about.svg"
                 alt="About"
-                className="w-[286px] h-[170.44px] lg:w-full lg:h-full object-cover lg:scale-100 mx-auto mt-9"
+                className="w-[286px] h-[170.44px] md:w-fit md:h-[200px] lg:w-[1062px] lg:h-fit object-cover lg:scale-100 mx-auto mt-9 md:mt-32 lg:mt-0 z-10"
               />
-
               <img
                 src="/assets/about-front.svg"
                 alt="Overlay"
-                className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[286px] h-[142.57px] lg:w-[1336px] lg:h-[666px] lg:scale-100 mt-9"
+                className="absolute inset-x-0 bottom-[45px] md:bottom-[34px] lg:bottom-[185px] w-[286px] h-[142.57px] md:w-[335.67px] md:h-fit
+             lg:w-[1062px] lg:h-fit lg:scale-100 z-20"
               />
 
               <img
                 src="/assets/about-me.svg"
                 alt="About Text"
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto z-10 scale-50 lg:scale-150"
+                className="absolute top-1/2 left-1/2 md:pt-[130px] -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto z-30 scale-50 md:scale-90 lg:scale-150"
               />
             </div>
 
             <motion.div
-              className="w-[188px] h-fit md:w-[300px] lg:w-[400px] 
-             absolute bottom-0 left-0 sm:mt-3 sm:mr-3 
-             text-white text-left text-sm lg:text-xl font-medium lexend 
-             lg:px-4 lg:py-2 rounded-lg sm:text-lg md:text-xl"
+              className="w-[188px] md:w-[240px] lg:w-[642px] h-fit
+    absolute bottom-0 left-0 lg:bottom-32 lg:left-0 
+    text-white text-left text-sm lg:text-xl font-medium lexend 
+    lg:px-4 lg:pt-20 rounded-lg sm:text-lg md:text-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -183,10 +183,10 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              className="w-[188px] h-fit md:w-[300px] lg:w-[400px] 
-             absolute top-0 right-0 sm:mt-3 sm:mr-3 
+              className="w-[188px] md:w-[280px] lg:w-[853px] h-fit 
+             absolute top-2 md:top-14 lg:top-12 right-0 sm:mt-3 sm:mr-3 
              text-white text-right text-sm lg:text-xl font-medium lexend 
-             lg:px-4 lg:py-2 rounded-lg sm:text-lg md:text-xl"
+             lg:px-4 lg:py-14 rounded-lg sm:text-lg md:text-xl"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}

@@ -22,11 +22,11 @@ module.exports = {
       screens: {
         sm: "640px",
         // md: "768px",
-        md: "1128px",
-        lg: "1024px",
+        md: "650px",
+        lg: "1144px",
         xl: "1280px",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
