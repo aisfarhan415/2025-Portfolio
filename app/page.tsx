@@ -165,8 +165,9 @@ export default function Home() {
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto z-10 scale-150"
               />
             </div>
+
             <motion.div
-              className="absolute bottom-[50px] left-5 text-white text-2xl font-medium lexend bg-black/40 px-4 py-2 rounded-lg backdrop-blur-md"
+              className="absolute bottom-[50px] left-5 text-white text-2xl font-medium lexend px-4 py-2 rounded-lg sm:text-xl md:text-2xl sm:left-3 md:left-5"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -177,8 +178,10 @@ export default function Home() {
             >
               I’m here to flip classics and make 'em mine.
             </motion.div>
+
             <motion.div
-              className="absolute top-[50px] right-20 text-white text-xl font-medium lexend px-4 py-2 rounded-lg"
+              className="absolute top-[50px] right-20 text-white text-xl font-medium lexend px-4 py-2 rounded-lg
+    sm:text-lg md:text-xl sm:right-3 md:right-10"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -191,9 +194,9 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Title */}
           <motion.h2
-            className="text-[64px] font-medium lexend text-center opacity-0 transition-all duration-500"
+            className="text-[32px] font-medium lexend text-center opacity-0 transition-all duration-500
+    sm:text-4xl md:text-5xl lg:text-6xl"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             whileHover={{
@@ -253,7 +256,7 @@ export default function Home() {
 
             {/* Right */}
             <motion.div
-              className="w-full lg:w-1/2 flex flex-col space-y-8"
+              className="w-full lg:w-1/2 flex flex-col max-w-full lg:max-w-[50%] mx-auto"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
@@ -263,8 +266,9 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" },
               }}
             >
+              {/* Heading */}
               <motion.h3
-                className="text-5xl sm:text-5xl font-regular lexend text-white opacity-80 text-right"
+                className="sm:text-5xl font-regular lexend text-white opacity-80 sm:text-center lg:text-right w-full"
                 whileHover={{
                   scale: 1.05,
                   opacity: 1,
@@ -275,8 +279,9 @@ export default function Home() {
                 Innovation
               </motion.h3>
 
+              {/* Paragraph */}
               <motion.p
-                className="text-xl text-white opacity-70 lexend leading-[2] text-right"
+                className="text-xl text-white opacity-70 lexend leading-[2] lg:text-right sm:text-center"
                 whileHover={{
                   scale: 1.02,
                   opacity: 0.9,
