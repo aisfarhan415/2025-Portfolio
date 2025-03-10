@@ -137,37 +137,40 @@ export default function Home() {
 
         <section
           id="about"
-          className="w-full bg-black text-white flex flex-col items-center p-8 sm:p-8 lg:p-14 space-y-14"
+          className="w-full bg-black text-white flex flex-col items-center p-[52px] sm:p-8 lg:p-14 space-y-8 lg:space-y-14"
         >
-          <div className="w-full max-w-[1336px] h-[813px] mx-auto overflow-hidden rounded-[42px] relative">
-            <div className="w-full max-w-[1336px] h-[796px] mx-auto overflow-hidden rounded-[42px] relative">
+          <div className="w-[286px] lg:w-full h-[242px] lg:max-w-[1336px] lg:h-[813px] mx-auto overflow-hidden relative">
+            <div className="w-full lg:max-w-[1336px] h-[242px] lg:h-[796px] mx-auto overflow-hidden rounded-[42px] relative">
               <img
                 src="/assets/about-me-back.svg"
                 alt="About Text"
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto scale-150"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto scale-50 lg:scale-150"
               />
 
               <img
                 src="/assets/about.svg"
                 alt="About"
-                className="w-full h-full object-cover"
+                className="w-[286px] h-[170.44px] lg:w-full lg:h-full object-cover lg:scale-100 mx-auto mt-9"
               />
 
               <img
                 src="/assets/about-front.svg"
                 alt="Overlay"
-                className="absolute top-[0px] left-[0px] w-full max-w-[1336px] max-h-[666px]"
+                className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[286px] h-[142.57px] lg:w-[1336px] lg:h-[666px] lg:scale-100 mt-9"
               />
 
               <img
                 src="/assets/about-me.svg"
                 alt="About Text"
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto z-10 scale-150"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto z-10 scale-50 lg:scale-150"
               />
             </div>
 
             <motion.div
-              className="absolute bottom-[50px] left-5 text-white text-2xl font-medium lexend px-4 py-2 rounded-lg sm:text-xl md:text-2xl sm:left-3 md:left-5"
+              className="w-[188px] h-fit md:w-[300px] lg:w-[400px] 
+             absolute bottom-0 left-0 sm:mt-3 sm:mr-3 
+             text-white text-left text-sm lg:text-xl font-medium lexend 
+             lg:px-4 lg:py-2 rounded-lg sm:text-lg md:text-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -180,8 +183,10 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              className="absolute top-[50px] right-20 text-white text-xl font-medium lexend px-4 py-2 rounded-lg
-    sm:text-lg md:text-xl sm:right-3 md:right-10"
+              className="w-[188px] h-fit md:w-[300px] lg:w-[400px] 
+             absolute top-0 right-0 sm:mt-3 sm:mr-3 
+             text-white text-right text-sm lg:text-xl font-medium lexend 
+             lg:px-4 lg:py-2 rounded-lg sm:text-lg md:text-xl"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -195,8 +200,8 @@ export default function Home() {
           </div>
 
           <motion.h2
-            className="text-[32px] font-medium lexend text-center opacity-0 transition-all duration-500
-    sm:text-4xl md:text-5xl lg:text-6xl"
+            className="font-medium lexend text-left md:text-center opacity-0 transition-all duration-500
+text-[40px] md:text-5xl lg:text-6xl"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             whileHover={{
@@ -209,7 +214,7 @@ export default function Home() {
           </motion.h2>
 
           {/* Bungkus ini biar spacingnya jalan */}
-          <div className="w-full flex flex-col-reverse lg:flex-row items-center justify-center space-x-8">
+          <div className="w-full flex flex-col-reverse lg:flex-row items-center justify-center gap-8 lg:gap-x-8 ">
             {/* Left */}
             <motion.div
               className="w-full lg:w-1/2 flex justify-center"
@@ -217,11 +222,11 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <div className="flex flex-col items-start w-full">
-                <h3 className="text-3xl font-medium lexend text-white text-center mb-4">
+              <div className="flex flex-col items-start w-full space-y-8">
+                <h3 className="text-3xl lg:text-5xl font-medium lexend text-white text-center ">
                   Get to Know Me
                 </h3>
-                <div className="grid grid-cols-2 gap-6 mt-6 w-full max-w-[630px]">
+                <div className="flex flex-col sm:grid sm:grid-cols-2 gap-6 w-full max-w-[630px]">
                   {[
                     { number: "1", label: "YOE" },
                     { number: "10+", label: "Collabs" },
@@ -233,7 +238,7 @@ export default function Home() {
                   ].map((item, index) => (
                     <motion.div
                       key={index}
-                      className={`bg-[#232323] px-6 py-8 h-[200px] rounded-lg flex flex-col items-start justify-center ${
+                      className={`bg-[#232323] px-6 py-8 h-[140px] lg:h-[200px] rounded-3xl lg:rounded-lg flex flex-col items-start justify-center ${
                         item.span || ""
                       }`}
                       variants={cardVariants}
@@ -242,10 +247,10 @@ export default function Home() {
                       whileHover="hover"
                       viewport={{ once: true, amount: 0.2 }}
                     >
-                      <span className="text-5xl font-regular lexend text-white">
+                      <span className="text-[32px] lg:text-5xl font-regular lexend text-white">
                         {item.number}
                       </span>
-                      <span className="text-2xl text-white lexend opacity-80">
+                      <span className="text-xl lg:text-2xl text-white lexend opacity-80">
                         {item.label}
                       </span>
                     </motion.div>
@@ -256,7 +261,7 @@ export default function Home() {
 
             {/* Right */}
             <motion.div
-              className="w-full lg:w-1/2 flex flex-col max-w-full lg:max-w-[50%] mx-auto"
+              className="w-full flex flex-col lg:max-w-[50%] lg:mx-auto space-y-8"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
@@ -268,7 +273,7 @@ export default function Home() {
             >
               {/* Heading */}
               <motion.h3
-                className="sm:text-5xl font-regular lexend text-white opacity-80 sm:text-center lg:text-right w-full"
+                className="text-4xl font-regular lexend text-white opacity-80 sm:text-center lg:text-right w-full"
                 whileHover={{
                   scale: 1.05,
                   opacity: 1,
@@ -296,11 +301,10 @@ export default function Home() {
               </motion.p>
             </motion.div>
           </div>
-
           <motion.div className="w-full">
             {/* Judul */}
             <motion.h3
-              className="text-5xl font-regular lexend text-white mb-8"
+              className="text-4xl sm:text-5xl lg:text-8xl lexend text-left lg:text-left font-regular lexend text-white/80 mb-8"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
@@ -326,7 +330,7 @@ export default function Home() {
               ].map((job, index) => (
                 <motion.div
                   key={index}
-                  className="flex justify-between items-center w-full"
+                  className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center w-full gap-2"
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{
@@ -340,7 +344,7 @@ export default function Home() {
                   }}
                 >
                   <motion.h4
-                    className="text-2xl font-regular lexend text-white"
+                    className="text-xl lg:text-2xl font-regular lexend text-left text-white/80"
                     whileHover={{
                       scale: 1.05,
                       opacity: 1,
@@ -350,7 +354,7 @@ export default function Home() {
                     {job.title}
                   </motion.h4>
                   <motion.p
-                    className="text-lg font-regular text-white lexend opacity-70"
+                    className="text-[16px] lg:text-2xl font-regular lexend text-left text-white/70"
                     whileHover={{
                       scale: 1.05,
                       opacity: 1,
@@ -392,9 +396,6 @@ export default function Home() {
                     }}
                     className="relative"
                   >
-                    <span className="absolute transition-transform hover:rotate-[360deg]">
-                      <ArrowRight className="text-white" />
-                    </span>
                     Click here to see more
                   </CustomButton>
                 </motion.div>
