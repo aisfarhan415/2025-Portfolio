@@ -14,180 +14,37 @@ export default function NotFound() {
       <div className="relative w-full h-full overflow-hidden">
         {/* Wrapper buat SVG biar gak bikin scrollbar */}
         <div className="absolute inset-0">
-          <motion.div
-            animate={{
-              x: ["0%", "-80%", "0%"],
-            }}
-            transition={{
-              duration: 12,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            className="absolute top-0 z-0"
-          >
-            <Image
-              src="/assets/not-found.svg"
-              alt="404 Not Found"
-              width={600}
-              height={200}
-              className="w-auto h-auto max-w-none"
-            />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              x: ["0%", "80%", "0%"],
-            }}
-            transition={{
-              duration: 12,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            className="absolute top-[120px] lz-0"
-          >
-            <Image
-              src="/assets/not-found.svg"
-              alt="404 Not Found"
-              width={600}
-              height={200}
-              className="w-auto h-auto max-w-none"
-            />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              x: ["0%", "-80%", "0%"],
-            }}
-            transition={{
-              duration: 12,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            className="absolute top-[240px] z-0"
-          >
-            <Image
-              src="/assets/not-found.svg"
-              alt="404 Not Found"
-              width={600}
-              height={200}
-              className="w-auto h-auto max-w-none"
-            />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              x: ["0%", "80%", "0%"],
-            }}
-            transition={{
-              duration: 12,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            className="absolute top-[360px] lz-0"
-          >
-            <Image
-              src="/assets/not-found.svg"
-              alt="404 Not Found"
-              width={600}
-              height={200}
-              className="w-auto h-auto max-w-none"
-            />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              x: ["0%", "-80%", "0%"],
-            }}
-            transition={{
-              duration: 12,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            className="absolute top-[480px] z-0"
-          >
-            <Image
-              src="/assets/not-found.svg"
-              alt="404 Not Found"
-              width={600}
-              height={200}
-              className="w-auto h-auto max-w-none"
-            />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              x: ["0%", "80%", "0%"],
-            }}
-            transition={{
-              duration: 12,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            className="absolute top-[600px] lz-0"
-          >
-            <Image
-              src="/assets/not-found.svg"
-              alt="404 Not Found"
-              width={600}
-              height={200}
-              className="w-auto h-auto max-w-none"
-            />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              x: ["0%", "-80%", "0%"],
-            }}
-            transition={{
-              duration: 12,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            className="absolute top-[720px] z-0"
-          >
-            <Image
-              src="/assets/not-found.svg"
-              alt="404 Not Found"
-              width={600}
-              height={200}
-              className="w-auto h-auto max-w-none"
-            />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              x: ["0%", "80%", "0%"],
-            }}
-            transition={{
-              duration: 12,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            className="absolute top-[840px] lz-0"
-          >
-            <Image
-              src="/assets/not-found.svg"
-              alt="404 Not Found"
-              width={600}
-              height={200}
-              className="w-auto h-auto max-w-none"
-            />
-          </motion.div>
+          {[...Array(8)].map((_, index) => (
+            <motion.div
+              key={index}
+              animate={{
+                x: index % 2 === 0 ? ["0%", "-80%", "0%"] : ["0%", "80%", "0%"],
+              }}
+              transition={{
+                duration: 12,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "mirror",
+              }}
+              className={`absolute top-[${
+                index * 120
+              }px] z-0 w-full flex justify-center`}
+            >
+              <Image
+                src="/assets/not-found.svg"
+                alt="404 Not Found"
+                width={600}
+                height={200}
+                className="w-[50vw] max-w-[300px] md:max-w-none"
+              />
+            </motion.div>
+          ))}
         </div>
 
-        {/* Konten utama biar tetap bisa scroll tanpa ganggu SVG */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
           <div className="space-y-3 flex flex-col items-center justify-center">
             <motion.h1
-              className="text-4xl font-bold relative inline-block"
+              className="text-2xl md:text-4xl font-bold relative inline-block"
               initial={{ opacity: 0, y: -50, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
@@ -202,7 +59,7 @@ export default function NotFound() {
             </motion.h1>
 
             <motion.p
-              className="text-6xl font-normal text-blue mt-2 relative inline-block"
+              className="text-4xl md:text-6xl font-normal text-blue mt-2 relative inline-block"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
@@ -213,6 +70,7 @@ export default function NotFound() {
             >
               404 NOT FOUND
             </motion.p>
+
             <motion.div
               whileHover={{
                 scale: 1.05,
