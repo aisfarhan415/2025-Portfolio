@@ -37,14 +37,20 @@ export default function Navbar() {
     setActiveSection((prev) =>
       prev !== currentSection ? currentSection : prev
     );
-    setIsHeroActive(currentSection === "#hero");
-    setIsProjectsActive(currentSection === "#projects");
-  }, []); // ✅ useCallback biar gak bikin fungsi baru terus
+    setIsHeroActive(
+      currentSection === "#hero" || currentSection === "#testimonials"
+    );
+    setIsProjectsActive(
+      currentSection === "#projects" ||
+        currentSection === "#about" ||
+        currentSection === "#contact"
+    );
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]); // ✅ Sekarang `handleScroll` gak akan berubah tiap render
+  }, [handleScroll]);
 
   return (
     <motion.div

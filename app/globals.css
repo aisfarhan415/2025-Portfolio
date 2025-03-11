@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;400&family=Castoro+Titling:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;400&family=Lexend+Zetta:wght@400&family=Castoro+Titling:wght@400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +6,10 @@
 
 .lexend {
   font-family: "Lexend Exa", sans-serif;
+}
+
+.lexendzetta {
+  font-family: "Lexend Zetta", sans-serif;
 }
 
 .castoro {
