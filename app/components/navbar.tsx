@@ -24,7 +24,11 @@ export default function Navbar() {
     setIsScrolled(window.scrollY > 50);
 
     let currentSection = "";
-    [...navItems, { name: "Hero", href: "/#hero" }].forEach((item) => {
+    [
+      ...navItems,
+      { name: "Hero", href: "/#hero" },
+      { name: "Detailed", href: "/#detailed" },
+    ].forEach((item) => {
       const section = document.querySelector(item.href.replace(/^\/#/, "#"));
       if (section) {
         const rect = section.getBoundingClientRect();
@@ -43,7 +47,8 @@ export default function Navbar() {
     setIsProjectsActive(
       currentSection === "/#projects" ||
         currentSection === "/#about" ||
-        currentSection === "/#contact"
+        currentSection === "/#contact" ||
+        currentSection === "/#detailed"
     );
   }, []);
 
@@ -51,6 +56,22 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
+
+  useEffect(() => {
+    const path = window.location.hash;
+    if (path === "#hero" || path === "#testimonials") {
+      setIsHeroActive(true);
+      setIsProjectsActive(false);
+    } else if (
+      path === "#projects" ||
+      path === "#about" ||
+      path === "#contact" ||
+      path === "#detailed"
+    ) {
+      setIsProjectsActive(true);
+      setIsHeroActive(false);
+    }
+  }, []);
 
   return (
     <motion.div
