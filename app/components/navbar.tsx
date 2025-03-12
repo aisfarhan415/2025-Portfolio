@@ -24,8 +24,8 @@ export default function Navbar() {
     setIsScrolled(window.scrollY > 50);
 
     let currentSection = "";
-    [...navItems, { name: "Hero", href: "#hero" }].forEach((item) => {
-      const section = document.querySelector(item.href);
+    [...navItems, { name: "Hero", href: "/#hero" }].forEach((item) => {
+      const section = document.querySelector(item.href.replace(/^\/#/, "#"));
       if (section) {
         const rect = section.getBoundingClientRect();
         if (rect.top <= 100 && rect.bottom >= 100) {
@@ -38,12 +38,12 @@ export default function Navbar() {
       prev !== currentSection ? currentSection : prev
     );
     setIsHeroActive(
-      currentSection === "#hero" || currentSection === "#testimonials"
+      currentSection === "/#hero" || currentSection === "/#testimonials"
     );
     setIsProjectsActive(
-      currentSection === "#projects" ||
-        currentSection === "#about" ||
-        currentSection === "#contact"
+      currentSection === "/#projects" ||
+        currentSection === "/#about" ||
+        currentSection === "/#contact"
     );
   }, []);
 
