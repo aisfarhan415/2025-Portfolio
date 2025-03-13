@@ -447,7 +447,7 @@ text-[40px] md:text-5xl lg:text-6xl"
               Timeless Creations, Modern Vision
             </motion.h2>
 
-            <div className="flex flex-col justify-between h-[400px] mb-8 lg:mb-0 w-full items-start lg:items-end lg:space-y-[32px] md:space-y-[16px] sm:space-y-[8px]">
+            <div className="flex flex-col lg:justify-between lg:h-[400px] lg:mb-0 w-full items-start lg:items-end gap-4 sm:gap-6 md:gap-8 lg:gap-10">
               <motion.p
                 className="text-xl text-white lexend font-light w-full sm:w-[226px] lg:text-right text-left sm:text-left"
                 initial={{ opacity: 0, x: -50 }}

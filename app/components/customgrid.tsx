@@ -35,7 +35,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
                 initial={{ opacity: 0.5 }}
                 whileHover={{ opacity: 0.3 }}
                 transition={{ duration: 0.3 }}
-              ></motion.div>
+              />
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-5 h-[94.37px] flex items-center">
                 <img
                   src={project.logoSrc}

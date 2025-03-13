@@ -82,12 +82,13 @@ export default function Navbar() {
       }}
       whileHover={{ y: 0 }}
     >
-      <div className="w-[40px] hidden md:block" />
+      <div className="w-[40px] hidden navbar_md:block" />
       {/* Navbar */}
       <motion.nav
         className={cn(
           "inline-flex justify-center py-3 px-8 transition-all duration-300 rounded-full w-fit mx-auto",
-          isProjectsActive ? "bg-white shadow-lg" : "bg-blue shadow-lg"
+          isProjectsActive ? "bg-white shadow-lg" : "bg-blue shadow-lg",
+          "navbar_md:px-8 navbar_md:py-3 px-4 py-2"
         )}
         whileHover={{
           scale: 1.05,
@@ -102,8 +103,8 @@ export default function Navbar() {
                   key={isHeroActive ? "favicon" : "favicon_blue"}
                   src={
                     isHeroActive
-                      ? "assets/favicon.svg"
-                      : "assets/favicon_blue.svg"
+                      ? "/assets/favicon.svg"
+                      : "/assets/favicon_blue.svg"
                   }
                   alt="Logo"
                   width={82}
@@ -130,7 +131,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden navbar_md:flex space-x-6">
             {navItems.map((item, index) => (
               <motion.div
                 key={index}
@@ -164,15 +165,29 @@ export default function Navbar() {
           {/* Burger Menu */}
           <button
             className={cn(
-              "md:hidden p-2 transition-colors duration-300",
+              "navbar_md:hidden p-2 transition-colors duration-300",
               isProjectsActive ? "text-blue" : "text-white"
             )}
             onClick={() => setIsOpen(!isOpen)}
           >
             <AnimatePresence mode="wait">
               <motion.img
-                key={isOpen ? "close" : "hamburger"}
-                src={isOpen ? "assets/close.svg" : "assets/hamburger.svg"}
+                key={
+                  isOpen
+                    ? "close"
+                    : isProjectsActive
+                    ? "hamburger_blue"
+                    : "hamburger"
+                }
+                src={
+                  isOpen
+                    ? isProjectsActive
+                      ? "/assets/close_blue.svg"
+                      : "/assets/close.svg"
+                    : isProjectsActive
+                    ? "/assets/hamburger_blue.svg"
+                    : "/assets/hamburger.svg"
+                }
                 alt={isOpen ? "Close Menu" : "Open Menu"}
                 className="w-6 h-6"
                 initial={{ rotate: 0, opacity: 0 }}
@@ -191,7 +206,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="md:hidden absolute top-full left-0 right-0 mx-auto max-w-[280px] bg-white shadow-lg rounded-[12px] flex flex-col items-center py-4 px-6 mt-[12px]"
+              className="navbar_md:hidden absolute top-full left-0 right-0 mx-auto max-w-[280px] bg-white shadow-lg rounded-[12px] flex flex-col items-center py-4 px-6 mt-[12px]"
             >
               {navItems.map((item, index) => (
                 <motion.div
@@ -248,7 +263,7 @@ export default function Navbar() {
       </motion.nav>
 
       {/* Desktop Only (Disembunyikan di Mobile) */}
-      <div className="hidden md:flex gap-3">
+      <div className="hidden navbar_md:flex gap-3">
         {/* Email */}
         <motion.div
           className="p-3 bg-white rounded-full border-2 border-blue hover:bg-gray-100 transition-colors duration-300"
