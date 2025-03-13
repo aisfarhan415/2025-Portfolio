@@ -46,7 +46,7 @@ export default function Home() {
       logoSrc: "/assets/pupr-logo.svg",
       name: "SIPASTI",
       year: "2024",
-      link: "/projects/coche",
+      link: "/detailed/sipasti",
     },
     {
       imgSrc: "/assets/creation_2.svg",
@@ -54,7 +54,7 @@ export default function Home() {
       logoSrc: "/assets/bahanbaku-logo.svg",
       name: "BahanbaKu",
       year: "2022",
-      link: "/projects/coche",
+      link: "/detailed/bahanbaku",
     },
     {
       imgSrc: "/assets/creation_3.svg",
@@ -62,7 +62,7 @@ export default function Home() {
       logoSrc: "/assets/coche-logo.svg",
       name: "Coche",
       year: "2021",
-      link: "/projects/coche",
+      link: "/detailed/coche",
     },
   ];
 
