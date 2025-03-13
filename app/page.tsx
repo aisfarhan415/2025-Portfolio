@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./globals.css";
 import { useReviewStore } from "./components/reviewStore";
 import TypingText from "./components/TypingText";
+import ProjectGrid from "./components/customgrid";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import ReviewNavigation from "./components/ReviewNavigation";
@@ -37,6 +38,33 @@ export default function Home() {
       transition: { duration: 0.3, ease: "easeOut" },
     },
   };
+
+  const projects = [
+    {
+      imgSrc: "/assets/creation_1.svg",
+      altText: "Photo 1",
+      logoSrc: "/assets/pupr-logo.svg",
+      name: "SIPASTI",
+      year: "2024",
+      link: "/projects/coche",
+    },
+    {
+      imgSrc: "/assets/creation_2.svg",
+      altText: "Photo 2",
+      logoSrc: "/assets/bahanbaku-logo.svg",
+      name: "BahanbaKu",
+      year: "2022",
+      link: "/projects/coche",
+    },
+    {
+      imgSrc: "/assets/creation_3.svg",
+      altText: "Photo 3",
+      logoSrc: "/assets/coche-logo.svg",
+      name: "Coche",
+      year: "2021",
+      link: "/projects/coche",
+    },
+  ];
 
   return (
     <div>
@@ -441,54 +469,8 @@ text-[40px] md:text-5xl lg:text-6xl"
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 w-full">
-            <div className="w-full group">
-              <motion.img
-                src="/assets/creation_1.svg"
-                alt="Photo 1"
-                className="w-full h-auto object-cover transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
-              />
-              <div className="mt-4 flex justify-between">
-                <p className="text-lg font-light lexend text-white">
-                  Project Name 1
-                </p>
-                <p className="text-lg font-light lexend text-white opacity-50">
-                  2023
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full group">
-              <motion.img
-                src="/assets/creation_2.svg"
-                alt="Photo 2"
-                className="w-full h-auto object-cover transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
-              />
-              <div className="mt-4 flex justify-between">
-                <p className="text-lg font-light lexend text-white">
-                  Project Name 2
-                </p>
-                <p className="text-lg font-light lexend text-white opacity-50">
-                  2022
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full group">
-              <motion.img
-                src="/assets/creation_3.svg"
-                alt="Photo 3"
-                className="w-full h-auto object-cover transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
-              />
-              <div className="mt-4 flex justify-between">
-                <p className="text-lg font-light lexend text-white">
-                  Project Name 3
-                </p>
-                <p className="text-lg font-light lexend text-white opacity-50">
-                  2021
-                </p>
-              </div>
-            </div>
+          <div className="">
+            <ProjectGrid projects={projects} />
           </div>
         </section>
 
