@@ -1,3 +1,5 @@
+"use client";
+
 import DetailedPage from "../../components/detailedpage";
 import Navbar from "../../components/navbar";
 
@@ -25,8 +27,6 @@ export default function ProjectDetail() {
         showcases={[
           "/assets/bahanbaku-showcase1.png",
           "/assets/bahanbaku-showcase2.png",
-          "/assets/bahanbaku-showcase3.png",
-          "/assets/bahanbaku-showcase4.png",
         ]}
       />
     </div>

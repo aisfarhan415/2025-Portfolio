@@ -14,6 +14,8 @@ const DetailedPage = ({
   position,
   credits,
   showcases,
+  buttonText,
+  buttonOnClick,
 }: {
   title: string;
   details: string[];
@@ -22,6 +24,8 @@ const DetailedPage = ({
   position: string;
   credits: string[];
   showcases: string[];
+  buttonText?: string;
+  buttonOnClick?: () => void;
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -73,32 +77,31 @@ const DetailedPage = ({
         {/* Detail Section */}
         <div className="mt-8 w-full flex flex-col lg:flex-row justify-between items-start gap-8">
           {/* Button (Kiri) */}
-          <motion.div
-            whileHover={{
-              scale: 1.05,
-              rotate: -3,
-              transition: { duration: 0.3 },
-            }}
-            className="w-full lg:w-auto"
-          >
-            <CustomButton
-              icon={ArrowRight}
-              iconBg="bg-black"
-              iconColor="text-white"
-              onClick={() =>
-                window.open(
-                  "https://docs.google.com/document/d/10IlWzJzxKb4KK0rZA0wcmVmM0UScZGFTTFUVGnZKLUU/edit?usp=sharing",
-                  "_blank"
-                )
-              }
-              iconStyle={{
-                transition: "transform 1s cubic-bezier(0.25, 0.8, 0.25, 1)",
-              }}
-              className="relative w-full lg:w-[380px]"
-            >
-              Click to see the projects
-            </CustomButton>
-          </motion.div>
+
+          <div className="w-full lg:w-auto">
+            {buttonText && buttonOnClick ? (
+              <motion.div
+                whileHover={{
+                  scale: 1.05,
+                  rotate: -3,
+                  transition: { duration: 0.3 },
+                }}
+                className="w-full lg:w-auto"
+              >
+                <CustomButton
+                  icon={ArrowRight}
+                  iconBg="bg-black"
+                  iconColor="text-white"
+                  onClick={buttonOnClick}
+                  className="relative w-full lg:w-[380px]"
+                >
+                  {buttonText}
+                </CustomButton>
+              </motion.div>
+            ) : (
+              <div className="h-[56px] w-[384px]"></div>
+            )}
+          </div>
 
           {/* Detail Info (Kanan) */}
           <div className="flex-1 w-full">
@@ -158,14 +161,14 @@ const DetailedPage = ({
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-          onClick={() => setSelectedImage(null)} // Close on background click
+          onClick={() => setSelectedImage(null)}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             className="relative"
-            onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking on image
+            onClick={(e) => e.stopPropagation()}
           >
             <Image
               src={selectedImage}
