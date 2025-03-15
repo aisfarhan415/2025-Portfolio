@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "./components/navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./globals.css";
 import { useReviewStore } from "./components/reviewStore";
 import TypingText from "./components/TypingText";
@@ -12,10 +12,18 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import CustomButton from "./components/custombutton";
 import { ArrowRight } from "iconsax-react";
+// import SplashScreen from "./components/splashscreen";
 
 export default function Home() {
   const { currentIndex, reviews, nextReview, prevReview } = useReviewStore();
   const [bgX, setBgX] = useState("50%");
+
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSplash(false), 3000); // ilangin setelah 3 detik
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleMouseMove = (e) => {
     const x = (e.clientX / window.innerWidth) * 100 - 50;
@@ -68,6 +76,10 @@ export default function Home() {
 
   return (
     <div>
+      {/* {showSplash ? (
+        <SplashScreen onFinish={() => setShowSplash(false)} />
+      ) : (
+        <> */}
       <Navbar />
       <main className="flex flex-col items-center justify-center min-h-screen bg-background text-gray-900 overflow-hidden scroll-smooth">
         <section
@@ -130,7 +142,11 @@ export default function Home() {
                 height: "auto",
               }}
               animate={{ rotate: [0, 360] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "linear",
+              }}
             />
             <motion.img
               src="/assets/rectangle_1.svg"
@@ -144,7 +160,11 @@ export default function Home() {
                 height: "auto",
               }}
               animate={{ rotate: [0, -360] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "linear",
+              }}
             />
             <motion.img
               src="/assets/rectangle_3.svg"
@@ -158,7 +178,11 @@ export default function Home() {
                 height: "auto",
               }}
               animate={{ rotate: [0, 360] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "linear",
+              }}
             />
           </div>
         </section>
@@ -626,6 +650,8 @@ text-[40px] md:text-5xl lg:text-6xl"
         <SpeedInsights />
         <Analytics />
       </main>
+      {/* </> */}
+      {/* )} */}
     </div>
   );
 }
