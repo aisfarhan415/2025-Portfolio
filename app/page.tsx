@@ -13,6 +13,7 @@ import { Analytics } from "@vercel/analytics/react";
 import CustomButton from "./components/custombutton";
 import { ArrowRight } from "iconsax-react";
 // import SplashScreen from "./components/splashscreen";
+import Footer from "./components/footer";
 
 export default function Home() {
   const { currentIndex, reviews, nextReview, prevReview } = useReviewStore();
@@ -612,40 +613,7 @@ text-[40px] md:text-5xl lg:text-6xl"
           </motion.div>
         </section>
 
-        <footer
-          id="contact"
-          className="bg-black text-white flex flex-col items-center justify-between min-h-[400px] md:min-h-[600px] lg:h-[878px] w-full px-6 sm:px-12 md:px-16 lg:px-[52px] py-12 sm:py-16 md:py-20 lg:py-[52px] overflow-hidden"
-          onMouseMove={handleMouseMove}
-        >
-          <div className="space-y-2 flex flex-col items-center justify-center text-center">
-            <p className="text-lg sm:text-xl md:text-2xl font-light lexend">
-              Contact me at
-            </p>
-            <p className="text-lg sm:text-xl md:text-2xl font-light lexend">
-              aisfarhan.professional@gmail.com
-            </p>
-          </div>
-
-          <motion.p
-            className="text-[72px] sm:text-[120px] md:text-[180px] lg:text-[240px] font-bold lexend-exa bg-clip-text text-transparent"
-            animate={{ backgroundPositionX: ["0%", "100%"] }}
-            transition={{
-              repeat: Infinity,
-              duration: 10,
-              ease: "linear",
-            }}
-            style={{
-              backgroundImage: "url('/assets/footer.svg')",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundSize: "1336px 1336px",
-              backgroundPosition: "0% center",
-              backgroundRepeat: "repeat",
-            }}
-          >
-            FARHAN
-          </motion.p>
-        </footer>
+        <Footer />
 
         <SpeedInsights />
         <Analytics />
