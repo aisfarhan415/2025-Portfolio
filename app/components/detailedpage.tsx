@@ -29,7 +29,6 @@ const DetailedPage = ({
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Handle ESC key
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -49,12 +48,12 @@ const DetailedPage = ({
   return (
     <div
       id="detailed"
-      className="min-h-screen bg-black text-white px-10 lexend flex justify-center"
+      className="min-h-screen w-full bg-black text-white lexend flex justify-center"
     >
-      <div className="w-full max-w-[1440px] pt-[146px] p-[52px] space-y-[92px]">
+      <div className="w-full max-w-[1440px] pt-[138px] lg:pt-[146px] p-[52px] space-y-4 lg:space-y-[92px]">
         {/* Header */}
         <div>
-          <h1 className="text-4xl font mb-6">{title}</h1>
+          <h1 className="text-xl lg:text-4xl font mb-6">{title}</h1>
 
           {/* Image */}
           <div className="w-full h-auto relative">
@@ -68,17 +67,17 @@ const DetailedPage = ({
           </div>
 
           {/* Client & Position */}
-          <div className="flex justify-between mt-4 text-white text-xl font-bold">
+          <div className="flex justify-between mt-4 text-white text-sm lg:text-xl font-normal lg:font-bold">
             <p className="font-semibold">{client}</p>
             <p className="font-semibold">{position}</p>
           </div>
         </div>
 
         {/* Detail Section */}
-        <div className="mt-8 w-full flex flex-col lg:flex-row justify-between items-start gap-8">
+        <div className="mt-0 lg:mt-8 w-full flex flex-col lg:flex-row justify-between items-start lg:gap-8 text-sm lg:text-2xl">
           {/* Button (Kiri) */}
 
-          <div className="w-full lg:w-auto">
+          <div className="w-full lg:w-auto py-6">
             {buttonText && buttonOnClick ? (
               <motion.div
                 whileHover={{
@@ -99,13 +98,13 @@ const DetailedPage = ({
                 </CustomButton>
               </motion.div>
             ) : (
-              <div className="h-[56px] w-[384px]"></div>
+              <div className="h-[56px] w-full lg:w-[384px]"></div>
             )}
           </div>
 
           {/* Detail Info (Kanan) */}
           <div className="flex-1 w-full">
-            <ul className="text-white text-[24px] text-wrap balance">
+            <ul className="text-white lg:text-[24px] text-sm text-wrap balance leading-[100%]">
               {details.map((item, index) => (
                 <li key={index} className="flex items-start gap-2">
                   {item}
@@ -119,10 +118,10 @@ const DetailedPage = ({
         <div className="flex-1 w-full">
           {/* Credits */}
           <div className="flex items-start w-full">
-            <h2 className="text-2xl w-[414px] font-semibold pb-2 mb-4">
+            <h2 className="text-sm lg:text-2xl w-[414px] font-semibold pb-2 mb-4">
               Credits
             </h2>
-            <ul className="text-white text-[24px] text-wrap balance text-right">
+            <ul className="text-white text-sm lg:text-[24px] text-wrap balance text-right">
               {credits.map((credit, index) => (
                 <li key={index} className="flex items-start gap-2">
                   {credit}
@@ -132,11 +131,11 @@ const DetailedPage = ({
           </div>
 
           {/* Showcases */}
-          <div className="flex items-start w-full mt-10">
-            <h2 className="text-2xl font-semibold pb-2 mb-4 w-[414px]">
+          <div className="flex flex-col sm:flex-row sm:items-start w-full mt-4">
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold pb-2 mb-4 sm:w-1/3">
               Showcases
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
               {showcases.map((src, index) => (
                 <div
                   key={index}
@@ -146,8 +145,8 @@ const DetailedPage = ({
                   <Image
                     src={src}
                     alt={`Showcase ${index + 1}`}
-                    width={412.69}
-                    height={293.47}
+                    width={412}
+                    height={293}
                     className="object-cover rounded-lg"
                   />
                 </div>
@@ -160,7 +159,7 @@ const DetailedPage = ({
       {/* Modal Zoom-in */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-9"
           onClick={() => setSelectedImage(null)}
         >
           <motion.div
