@@ -5,6 +5,7 @@ import CustomButton from "./custombutton";
 import { motion } from "framer-motion";
 import { ArrowRight } from "iconsax-react";
 import { useState, useEffect } from "react";
+import Footer from "./footer";
 
 const DetailedPage = ({
   title,
@@ -48,7 +49,7 @@ const DetailedPage = ({
   return (
     <div
       id="detailed"
-      className="min-h-screen w-full bg-black text-white lexend flex justify-center"
+      className="min-h-screen w-full bg-black text-white lexend flex flex-col items-center"
     >
       <div className="w-full max-w-[1440px] pt-[138px] lg:pt-[146px] p-[52px] space-y-4 lg:space-y-[92px]">
         {/* Header */}
@@ -154,6 +155,7 @@ const DetailedPage = ({
             </div>
           </div>
         </div>
+        <Footer />
       </div>
 
       {/* Modal Zoom-in */}
