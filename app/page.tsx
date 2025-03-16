@@ -198,7 +198,7 @@ export default function Home() {
               <img
                 src="/assets/about-me-back.svg"
                 alt="About Text"
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 md:pt-[130px] -translate-y-1/2 w-[500px] h-auto z-20 scale-50  md:scale-90 lg:scale-150"
+                className="absolute top-[60%] md:top-[50%] lg:top-[35%] left-1/2 -translate-x-1/2 md:pt-[130px] -translate-y-1/2 w-[500px] h-auto z-20 scale-50  md:scale-90 lg:scale-150"
               />
 
               <img
@@ -216,7 +216,7 @@ export default function Home() {
               <img
                 src="/assets/about-me.svg"
                 alt="About Text"
-                className="absolute top-1/2 left-1/2 md:pt-[130px] -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto z-30 scale-50 md:scale-90 lg:scale-150"
+                className="absolute top-[60%] md:top-[50%] lg:top-[35%] left-1/2 md:pt-[130px] -translate-x-1/2 -translate-y-1/2 w-[500px] h-auto z-30 scale-50 md:scale-90 lg:scale-150"
               />
             </div>
 
