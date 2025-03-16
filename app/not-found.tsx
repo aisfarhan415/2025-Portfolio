@@ -99,12 +99,7 @@ export default function NotFound() {
               iconBg="bg-white"
               iconColor="text-blue"
               icon={ArrowRight}
-              onClick={() =>
-                window.open(
-                  "https://docs.google.com/document/d/10IlWzJzxKb4KK0rZA0wcmVmM0UScZGFTTFUVGnZKLUU/edit?usp=sharing",
-                  "_blank"
-                )
-              }
+              onClick={() => (window.location.href = "/")}
               iconStyle={{
                 transition: "transform 1s cubic-bezier(0.25, 0.8, 0.25, 1)",
               }}
