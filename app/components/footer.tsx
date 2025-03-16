@@ -10,15 +10,15 @@ const Footer: React.FC = () => {
       className="bg-black text-white flex flex-col justify-between min-h-screen w-full overflow-hidden"
     >
       {/* Top Section: Skills/Services, Sitemap, Contact Me */}
-      <div className="w-full flex flex-row justify-between px-6 sm:px-12 md:px-16 lg:px-[52px] py-12">
+      <div className="w-full flex flex-col md:flex-row lg:flex-row justify-between px-6 sm:px-12 md:px-16 lg:px-[52px] py-12 space-y-10 md:space-y-0 lg:space-y-0">
         {/* Skills & Services */}
         <motion.div
-          className="flex flex-col items-start text-left mr-52"
+          className="flex flex-col items-start text-left lg:w-full md:w-full"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-lg font-normal leading-[300%] lexend text-white/80">
+          <h2 className="text-base lg:text-lg font-normal leading-[300%] lexend text-white/80">
             Skills & Services
           </h2>
           <motion.div
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
             ].map((skill, index) => (
               <motion.span
                 key={index}
-                className="text-[28px] font-normal leading-[100%] lexend"
+                className="text-lg lg:text-[28px] font-normal leading-[100%] lexend"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 whileHover={skill.hoverEffect}
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
         </motion.div>
         {/* Sitemap */}
         <motion.div
-          className="flex flex-col items-start text-left"
+          className="flex flex-col items-start text-left md:w-full"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
             Sitemap
           </h2>
           <motion.div
-            className="grid grid-cols-2 gap-x-12 gap-y-8 text-[16px]"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8 text-[16px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -78,14 +78,14 @@ const Footer: React.FC = () => {
               {
                 text: "Home",
                 href: "#hero",
-                hoverEffect: { x: 10, opacity: 1, color: "#60a5fa" }, // Geser kanan + warna biru muda
+                hoverEffect: { x: 10, opacity: 1, color: "#60a5fa" },
               },
               {
                 text: "Projects",
                 href: "#projects",
                 hoverEffect: {
                   scale: 1.15,
-                  textShadow: "0px 0px 8px rgba(255,255,255,0.8)", // Scale up + glow
+                  textShadow: "0px 0px 8px rgba(255,255,255,0.8)",
                 },
               },
               {
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
                 href: "#about",
                 hoverEffect: {
                   rotate: 5,
-                  color: "#facc15", // Rotate lebih ekstrim + warna kuning
+                  color: "#facc15",
                 },
               },
               {
@@ -103,14 +103,14 @@ const Footer: React.FC = () => {
                   y: -6,
                   opacity: 1,
                   textDecoration: "underline",
-                  textDecorationThickness: "3px", // Underline lebih tebel pas hover
+                  textDecorationThickness: "3px",
                 },
               },
             ].map((item, index) => (
               <motion.a
                 key={index}
                 href={item.href}
-                className="font-normal leading-[100%] lexend relative hover:underline"
+                className="text-lg leading-[100%] lexend relative hover:underline"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 whileHover={item.hoverEffect}
@@ -123,11 +123,11 @@ const Footer: React.FC = () => {
         </motion.div>
         {/* Contact Me Card */}
         <motion.div
-          className="ml-auto flex flex-col items-end text-right"
+          className="w-full flex flex-col items-start md:items-end lg:items-end text-left lg:text-right"
           whileHover={{ scale: 1.05, rotate: 2 }}
           transition={{ type: "spring", stiffness: 300, damping: 10 }}
         >
-          <div className="bg-white/20 text-white rounded-2xl p-3 shadow-lg h-[104px] w-[235px] flex flex-col items-end justify-between">
+          <div className="bg-white/20 text-white rounded-2xl p-3 shadow-lg h-[104px] w-[235px] flex flex-col items-start lg:items-end justify-between">
             <Global size="20" className="self-start text-white/80" />
 
             <motion.div
@@ -155,7 +155,7 @@ const Footer: React.FC = () => {
       {/* Footer Bottom */}
       <div className="flex flex-col w-full items-center justify-between space-y-6">
         <motion.div
-          className="flex w-full justify-between text-sm sm:text-base md:text-lg font-light px-6 sm:px-12 md:px-16 lg:px-[52px] lexend"
+          className="flex flex-col sm:flex-row w-full justify-center sm:justify-between text-xs sm:text-sm md:text-base lg:text-lg font-light text-center sm:text-left px-6 sm:px-12 md:px-16 lg:px-[52px] lexend"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -184,6 +184,7 @@ const Footer: React.FC = () => {
               scale: 1.05,
               textShadow: "0px 0px 10px rgba(255,255,255,0.8)",
             }}
+            className="mt-2 sm:mt-0"
           >
             Email me at{" "}
             <motion.a
@@ -201,7 +202,7 @@ const Footer: React.FC = () => {
         </motion.div>
 
         <motion.p
-          className="text-[192px] font-bold text-white castoro"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-[192px] font-bold text-white castoro"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
