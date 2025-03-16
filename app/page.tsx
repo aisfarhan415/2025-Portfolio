@@ -14,6 +14,7 @@ import CustomButton from "./components/custombutton";
 import { ArrowRight } from "iconsax-react";
 // import SplashScreen from "./components/splashscreen";
 import Footer from "./components/footer";
+import { Linkedin } from "lucide-react";
 
 export default function Home() {
   const { currentIndex, reviews, nextReview, prevReview } = useReviewStore();
@@ -600,6 +601,15 @@ text-[40px] md:text-5xl lg:text-6xl"
                   >
                     {reviews[currentIndex].position}
                   </motion.p>
+
+                  <a
+                    href={reviews[currentIndex].linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 text-blue-600 hover:text-blue-800 transition flex items-center gap-2"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
                 </div>
               </div>
 
