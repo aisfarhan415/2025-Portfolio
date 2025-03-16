@@ -224,7 +224,7 @@ export default function Home() {
               className="w-[188px] md:w-[240px] lg:w-[642px] h-fit
     absolute bottom-0 left-0 lg:bottom-32 lg:left-0 
     text-white text-left text-sm lg:text-xl font-medium lexend 
-    lg:px-4 lg:pt-20 rounded-lg sm:text-lg md:text-xl"
+    lg:px-4 lg:pt-20 rounded-lg sm:text-lg md:text-xl z-50"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -240,7 +240,7 @@ export default function Home() {
               className="w-[188px] md:w-[280px] lg:w-[853px] h-fit 
              absolute top-2 md:top-14 lg:top-12 right-0 sm:mt-3 sm:mr-3 
              text-white text-right text-sm lg:text-xl font-medium lexend 
-             lg:px-4 lg:py-14 rounded-lg sm:text-lg md:text-xl"
+             lg:px-4 lg:py-14 rounded-lg sm:text-lg md:text-xl z-50"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
