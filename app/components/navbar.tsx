@@ -96,7 +96,7 @@ export default function Navbar() {
         }}
       >
         <div className="flex items-center gap-x-12">
-          <Link href="#hero" className="flex items-center gap-2">
+          <Link href="/#hero" className="flex items-center gap-2">
             <div className="relative w-[82px] h-[63px]">
               <AnimatePresence mode="wait">
                 <motion.img
