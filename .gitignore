@@ -18,6 +18,10 @@
 .env.test.local
 .env.production.local
 .next
+.next_*
+.npm
+.npm-cache
+Library/
 
 npm-debug.log*
 yarn-debug.log*

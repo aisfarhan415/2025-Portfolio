@@ -1,5 +1,6 @@
+import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link"; // Import Link dari Next.js
 
 type Project = {
   imgSrc: string;
@@ -10,50 +11,38 @@ type Project = {
   link: string;
 };
 
-type ProjectGridProps = {
-  projects: Project[];
-};
+type ProjectGridProps = { projects: Project[] };
 
 const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 w-full">
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
       {projects.map((project, index) => (
-        <Link href={project.link} key={index} passHref>
-          <div className="w-full group relative overflow-hidden cursor-pointer">
-            <motion.div
-              className="relative w-full h-auto"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.img
+        <motion.div
+          key={project.name}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, delay: index * 0.08 }}
+        >
+          <Link href={project.link} className="ui-surface group block overflow-hidden rounded-2xl">
+            <div className="relative h-52 overflow-hidden border-b border-slate-100 bg-slate-50">
+              <Image
                 src={project.imgSrc}
                 alt={project.altText}
-                className="w-full h-auto object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
               />
-              <motion.div
-                className="absolute inset-0 bg-black"
-                initial={{ opacity: 0.5 }}
-                whileHover={{ opacity: 0.3 }}
-                transition={{ duration: 0.3 }}
-              />
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-5 h-[94.37px] flex items-center">
-                <img
-                  src={project.logoSrc}
-                  alt="Company Logo"
-                  className="h-full"
-                />
-              </div>
-            </motion.div>
-            <div className="mt-4 flex justify-between">
-              <p className="text-lg font-light lexend text-white">
-                {project.name}
-              </p>
-              <p className="text-lg font-light lexend text-white opacity-50">
-                {project.year}
-              </p>
+              <motion.div whileHover={{ y: -2 }} className="absolute left-3 top-3 rounded-lg bg-white/95 px-3 py-2 shadow">
+                <Image src={project.logoSrc} alt={`${project.name} logo`} width={96} height={28} className="h-7 w-auto" />
+              </motion.div>
             </div>
-          </div>
-        </Link>
+            <div className="flex items-center justify-between px-4 py-3">
+              <h3 className="font-semibold text-slate-900">{project.name}</h3>
+              <span className="code-font text-xs text-slate-500">{project.year}</span>
+            </div>
+          </Link>
+        </motion.div>
       ))}
     </div>
   );

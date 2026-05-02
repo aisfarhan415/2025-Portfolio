@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import CustomButton from "./custombutton";
-import { motion } from "framer-motion";
-import { ArrowRight } from "iconsax-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { ArrowUpRight, X } from "lucide-react";
 import Footer from "./footer";
 
 const DetailedPage = ({
@@ -32,161 +31,108 @@ const DetailedPage = ({
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setSelectedImage(null);
-      }
+      if (event.key === "Escape") setSelectedImage(null);
     };
-
-    if (selectedImage) {
-      window.addEventListener("keydown", handleKeyDown);
-    }
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [selectedImage]);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
-    <div
-      id="detailed"
-      className="min-h-screen w-full bg-black text-white lexend flex flex-col items-center"
-    >
-      <div className="w-full max-w-[1440px] pt-[138px] lg:pt-[146px] p-[52px] space-y-4 lg:space-y-[92px]">
-        {/* Header */}
-        <div>
-          <h1 className="text-xl lg:text-4xl font mb-6">{title}</h1>
-
-          {/* Image */}
-          <div className="w-full h-auto relative">
-            <Image
-              src={imageSrc}
-              alt="Detail Image"
-              width={1440}
-              height={900}
-              className="object-contain w-full h-auto rounded-lg"
-            />
+    <div id="detailed" className="mx-auto w-full max-w-6xl px-4 pb-12 pt-28 md:px-8 md:pt-32">
+      <section className="liquid-surface rounded-[2rem] p-6 md:p-10">
+        <div className="mb-6 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">Project Case Study</p>
+            <h1 className="text-3xl font-bold text-slate-900 md:text-5xl">{title}</h1>
           </div>
-
-          {/* Client & Position */}
-          <div className="flex justify-between mt-4 text-white text-sm lg:text-xl font-normal lg:font-bold">
-            <p className="font-semibold">{client}</p>
-            <p className="font-semibold">{position}</p>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-700">
+            <span className="liquid-chip rounded-full px-3 py-1">{client}</span>
+            <span className="liquid-chip rounded-full px-3 py-1">{position}</span>
           </div>
         </div>
 
-        {/* Detail Section */}
-        <div className="mt-0 lg:mt-8 w-full flex flex-col lg:flex-row justify-between items-start lg:gap-8 text-sm lg:text-2xl">
-          {/* Button (Kiri) */}
+        <div className="overflow-hidden rounded-2xl border border-white/60">
+          <Image src={imageSrc} alt={`${title} hero`} width={1440} height={900} className="h-auto w-full object-cover" priority />
+        </div>
 
-          <div className="w-full lg:w-auto py-6">
+        <div className="mt-6 grid gap-5 lg:grid-cols-12">
+          <div className="lg:col-span-4">
             {buttonText && buttonOnClick ? (
-              <motion.div
-                whileHover={{
-                  scale: 1.05,
-                  rotate: -3,
-                  transition: { duration: 0.3 },
-                }}
-                className="w-full lg:w-auto"
+              <button
+                onClick={buttonOnClick}
+                className="inline-flex w-full items-center justify-between rounded-2xl bg-slate-900 px-5 py-4 text-sm font-semibold text-white transition hover:bg-slate-800"
               >
-                <CustomButton
-                  icon={ArrowRight}
-                  iconBg="bg-black"
-                  iconColor="text-white"
-                  onClick={buttonOnClick}
-                  className="relative w-full lg:w-[380px]"
-                >
-                  {buttonText}
-                </CustomButton>
-              </motion.div>
-            ) : (
-              <div className="h-[56px] w-full lg:w-[384px]"></div>
-            )}
+                {buttonText}
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            ) : null}
           </div>
-
-          {/* Detail Info (Kanan) */}
-          <div className="flex-1 w-full">
-            <ul className="text-white lg:text-[24px] text-sm text-wrap balance leading-[100%]">
-              {details.map((item, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <div className="space-y-3 lg:col-span-8">
+            {details.map((item, index) => (
+              <p key={index} className="text-sm leading-relaxed text-slate-700 md:text-base">{item}</p>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* Credits & Showcases Section */}
-        <div className="flex-1 w-full">
-          {/* Credits */}
-          <div className="flex items-start w-full">
-            <h2 className="text-sm lg:text-2xl w-[414px] font-semibold pb-2 mb-4">
-              Credits
-            </h2>
-            <ul className="text-white text-sm lg:text-[24px] text-wrap balance text-right">
-              {credits.map((credit, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  {credit}
-                </li>
-              ))}
-            </ul>
-          </div>
+      <section className="mt-5 grid gap-5 lg:grid-cols-12">
+        <article className="liquid-surface rounded-3xl p-6 lg:col-span-4">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-slate-600">Credits</h2>
+          <ul className="space-y-2 text-sm text-slate-700">
+            {credits.map((credit, index) => (
+              <li key={index}>{credit}</li>
+            ))}
+          </ul>
+        </article>
 
-          {/* Showcases */}
-          <div className="flex flex-col sm:flex-row sm:items-start w-full mt-4">
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold pb-2 mb-4 sm:w-1/3">
-              Showcases
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
-              {showcases.map((src, index) => (
-                <div
-                  key={index}
-                  className="w-full relative cursor-pointer"
-                  onClick={() => setSelectedImage(src)}
-                >
-                  <Image
-                    src={src}
-                    alt={`Showcase ${index + 1}`}
-                    width={412}
-                    height={293}
-                    className="object-cover rounded-lg"
-                  />
-                </div>
-              ))}
-            </div>
+        <article className="liquid-surface rounded-3xl p-6 lg:col-span-8">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-slate-600">Showcases</h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {showcases.map((src, index) => (
+              <motion.button
+                key={src}
+                whileHover={{ y: -4, scale: 1.01 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden rounded-2xl border border-white/65 text-left"
+                onClick={() => setSelectedImage(src)}
+                aria-label={`Open showcase ${index + 1}`}
+              >
+                <Image src={src} alt={`Showcase ${index + 1}`} width={520} height={360} className="h-full w-full object-cover" />
+              </motion.button>
+            ))}
           </div>
-        </div>
+        </article>
+      </section>
+
+      <div className="mt-5">
         <Footer />
       </div>
 
-      {/* Modal Zoom-in */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-9"
-          onClick={() => setSelectedImage(null)}
-        >
+      <AnimatePresence>
+        {selectedImage && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="relative"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/75 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
           >
-            <Image
-              src={selectedImage}
-              alt="Zoomed Showcase"
-              width={800}
-              height={600}
-              className="object-contain rounded-lg"
-            />
-            <button
-              className="absolute top-4 right-4 bg-black text-white py-2 px-3 rounded-full"
-              onClick={() => setSelectedImage(null)}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.2 }}
+              className="liquid-surface relative w-full max-w-4xl overflow-hidden rounded-3xl p-2"
+              onClick={(event) => event.stopPropagation()}
             >
-              ✕
-            </button>
+              <Image src={selectedImage} alt="Selected showcase" width={1400} height={900} className="h-auto w-full rounded-2xl object-contain" />
+              <button className="absolute right-5 top-5 rounded-full bg-slate-900 p-2 text-white" onClick={() => setSelectedImage(null)} aria-label="Close">
+                <X className="h-4 w-4" />
+              </button>
+            </motion.div>
           </motion.div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 };

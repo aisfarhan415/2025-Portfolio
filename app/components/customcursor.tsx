@@ -71,7 +71,7 @@ const CustomCursor = () => {
       document.removeEventListener("mouseout", hoverEffect);
       document.removeEventListener("scroll", changeStyle);
     };
-  }, [controls]);
+  }, [controls, isHovering]);
 
   return (
     <motion.div

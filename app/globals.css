@@ -1,32 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;400&family=Lexend+Zetta:wght@400&family=Castoro+Titling:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.lexend {
-  font-family: "Lexend Exa", sans-serif;
+:root {
+  --bg: #f4f7ff;
+  --surface: #ffffff;
+  --surface-2: #eef4ff;
+  --line: #d7e2f3;
+  --text: #0f172a;
+  --muted: #475569;
+  --primary: #295df6;
+  --accent: #13c6a3;
 }
 
-.lexendzetta {
-  font-family: "Lexend Zetta", sans-serif;
-}
-
-.castoro {
-  font-family: "Castoro Titling", serif;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  cursor: url("/assets/cursor.svg") 8 8, auto;
-  transition: cursor 0.3s ease-in-out;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background:
+    radial-gradient(55% 45% at 90% -10%, rgba(41, 93, 246, 0.2) 0%, rgba(41, 93, 246, 0) 70%),
+    radial-gradient(45% 30% at 12% 25%, rgba(19, 198, 163, 0.12) 0%, rgba(19, 198, 163, 0) 70%),
+    var(--bg);
 }
 
-#projects,
-#contact {
-  cursor: url("/assets/cursor-white.svg") 8 8, auto;
-  transition: cursor 0.3s ease-in-out;
+h1, h2, h3, h4 {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.02em;
 }
+
+.ui-surface {
+  background: linear-gradient(180deg, #fff, #fdfefe);
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+}
+
+.ui-fancy {
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(41, 93, 246, 0.12) 0%, rgba(41, 93, 246, 0) 55%),
+    radial-gradient(100% 120% at 100% 100%, rgba(19, 198, 163, 0.1) 0%, rgba(19, 198, 163, 0) 52%),
+    var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px rgba(23, 36, 77, 0.12);
+}
+
+.ui-subtle {
+  background: var(--surface-2);
+  border: 1px solid #dde8fb;
+}
+
+.code-font { font-family: 'IBM Plex Mono', monospace; }
