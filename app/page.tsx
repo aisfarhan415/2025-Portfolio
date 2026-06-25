@@ -6,7 +6,9 @@ import Navbar from "./components/navbar";
 import "./globals.css";
 import ProjectGrid from "./components/customgrid";
 import Footer from "./components/footer";
-import { ArrowRight, Sparkles, Workflow } from "lucide-react";
+import { ArrowLeft, ArrowRight, Linkedin, Sparkles, Workflow } from "lucide-react";
+import Image from "next/image";
+import { useReviewStore } from "./components/reviewStore";
 
 const projects = [
   { imgSrc: "/assets/creation_1.svg", altText: "SIPASTI showcase", logoSrc: "/assets/pupr-logo.svg", name: "SIPASTI", year: "2024", link: "/detailed/sipasti" },
@@ -35,6 +37,7 @@ const item = {
 export default function Home() {
   const [mode, setMode] = useState<Mode>("recruiter");
   const active = useMemo(() => modes[mode], [mode]);
+  const { currentIndex, reviews, nextReview, prevReview } = useReviewStore();
 
   return (
     <div className="relative overflow-hidden">
@@ -125,6 +128,65 @@ export default function Home() {
             <p className="max-w-md text-sm text-slate-600 md:text-base">Case studies that balance business goals, usability, visual quality, and technical execution.</p>
           </div>
           <ProjectGrid projects={projects} />
+        </motion.section>
+
+        <motion.section id="testimonials" variants={item} className="ui-fancy rounded-3xl p-8 md:p-12">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-8">
+            <div>
+              <p className="code-font text-xs uppercase tracking-wider text-blue-700">Testimonials</p>
+              <h2 className="mt-2 text-3xl font-bold text-slate-900 md:text-5xl">From Viewers to Believers</h2>
+            </div>
+            <p className="max-w-md text-sm text-slate-600">What colleagues and collaborators say about working with me.</p>
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="ui-surface rounded-2xl p-6 md:p-8"
+            >
+              <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-blue-100 shadow-sm bg-slate-100">
+                    <Image
+                      src={reviews[currentIndex].photo}
+                      alt={reviews[currentIndex].name}
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 flex items-center gap-2">
+                      {reviews[currentIndex].name}
+                      <a href={reviews[currentIndex].linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 transition" aria-label="LinkedIn Profile">
+                        <Linkedin size={16} />
+                      </a>
+                    </h4>
+                    <p className="text-xs text-slate-500">{reviews[currentIndex].position}</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  <button onClick={prevReview} className="rounded-xl border border-slate-200 bg-white p-2.5 text-slate-600 hover:bg-slate-50 transition" aria-label="Previous review">
+                    <ArrowLeft size={16} />
+                  </button>
+                  <button onClick={nextReview} className="rounded-xl border border-slate-200 bg-white p-2.5 text-slate-600 hover:bg-slate-50 transition" aria-label="Next review">
+                    <ArrowRight size={16} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-6 border-t border-slate-100 pt-6">
+                <p className="text-sm md:text-base leading-relaxed text-slate-700 italic">
+                  &ldquo;{reviews[currentIndex].text}&rdquo;
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </motion.section>
       </motion.main>
       <Footer />

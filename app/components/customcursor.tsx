@@ -45,7 +45,7 @@ const CustomCursor = () => {
           element.getBoundingClientRect().bottom >= window.innerHeight / 2
         ) {
           setCursorStyle({
-            backgroundColor: isHovering ? "#DDEEFF" : section.color,
+            backgroundColor: section.color,
             border: "none",
           });
 

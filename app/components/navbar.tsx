@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { name: "About", href: "/#about" },
@@ -32,15 +33,34 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {open && (
-        <div className="ui-surface mx-auto mt-2 max-w-6xl rounded-xl p-2 md:hidden">
-          {navItems.map((item) => (
-            <Link key={item.name} href={item.href} onClick={() => setOpen(false)} className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-blue-50">
-              {item.name}
-            </Link>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="ui-surface mx-auto mt-2 max-w-6xl rounded-xl p-2 md:hidden"
+          >
+            {navItems.map((item, idx) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.04, duration: 0.2 }}
+              >
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-blue-50"
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

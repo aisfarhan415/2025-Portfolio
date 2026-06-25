@@ -21,6 +21,7 @@
 .next_*
 .npm
 .npm-cache
+npm-cache
 Library/
 
 npm-debug.log*
