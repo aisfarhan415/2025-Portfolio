@@ -1,4 +1,5 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
@@ -10,7 +11,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blue: "#1929FE",
+        blue: {
+          ...colors.blue,
+          DEFAULT: "#1929FE",
+        },
         white: "#FFFFFF",
         black: "#000000",
         background: "#FFFFFF",
