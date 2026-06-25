@@ -136,7 +136,7 @@ export default function Home() {
               {
                 role: "Fullstack Developer",
                 company: "Kementerian Pekerjaan Umum",
-                date: "Oct - Dec 2024",
+                date: "Oct 2024 - Present",
                 type: "Dev",
                 color: "bg-blue-50 text-blue-700 border-blue-200",
               },
