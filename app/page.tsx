@@ -41,8 +41,11 @@ export default function Home() {
 
   return (
     <div className="relative overflow-hidden">
-      <motion.div className="pointer-events-none absolute -left-24 top-28 h-56 w-56 rounded-full bg-blue-300/30 blur-3xl" animate={{ y: [0, -25, 0], x: [0, 12, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
-      <motion.div className="pointer-events-none absolute right-8 top-40 h-64 w-64 rounded-full bg-emerald-200/30 blur-3xl" animate={{ y: [0, 20, 0], x: [0, -16, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-15%] w-[60vw] h-[60vw] rounded-full bg-blob-1 blur-[120px]" />
+        <div className="absolute bottom-[20%] right-[-15%] w-[70vw] h-[70vw] rounded-full bg-blob-2 blur-[140px]" />
+        <div className="absolute top-[35%] left-[10%] w-[50vw] h-[50vw] rounded-full bg-blob-3 blur-[130px]" />
+      </div>
 
       <Navbar />
 
