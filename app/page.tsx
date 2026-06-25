@@ -122,6 +122,65 @@ export default function Home() {
           ))}
         </motion.section>
 
+        <motion.section id="experience" variants={item} className="ui-fancy rounded-3xl p-8 md:p-12 space-y-8">
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="code-font text-xs uppercase tracking-wider text-blue-700">Career Timeline</p>
+              <h2 className="mt-2 text-3xl font-bold text-slate-900 md:text-5xl">Professional Journey</h2>
+            </div>
+            <p className="max-w-md text-sm text-slate-600">A hybrid background blending UX/UI design and full-stack development.</p>
+          </div>
+
+          <div className="relative border-l border-slate-200 pl-6 ml-4 space-y-8">
+            {[
+              {
+                role: "Fullstack Developer",
+                company: "Kementerian Pekerjaan Umum",
+                date: "Oct - Dec 2024",
+                type: "Dev",
+                color: "bg-blue-50 text-blue-700 border-blue-200",
+              },
+              {
+                role: "UI/UX Design Intern",
+                company: "AIDO Health",
+                date: "May - Aug 2024",
+                type: "Design",
+                color: "bg-emerald-50 text-emerald-700 border-emerald-200",
+              },
+              {
+                role: "UI/UX Designer",
+                company: "YouApp",
+                date: "Nov 2023 - Jan 2024",
+                type: "Design",
+                color: "bg-emerald-50 text-emerald-700 border-emerald-200",
+              },
+            ].map((job) => (
+              <motion.div 
+                key={job.role} 
+                whileHover={{ x: 4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative"
+              >
+                {/* Timeline dot */}
+                <div className="absolute -left-[31px] top-1.5 h-4 w-4 rounded-full border-2 border-white bg-blue-600 shadow-sm" />
+                
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-bold text-slate-900 text-lg">{job.role}</h3>
+                      <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${job.color}`}>
+                        {job.type}
+                      </span>
+                    </div>
+                    <p className="text-sm text-slate-600">{job.company}</p>
+                  </div>
+                  <span className="code-font text-xs text-slate-500">{job.date}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
         <motion.section id="projects" variants={item} className="space-y-6">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <h2 className="text-3xl font-bold text-slate-900 md:text-5xl">Selected Work</h2>
