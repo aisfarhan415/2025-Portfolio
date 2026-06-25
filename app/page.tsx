@@ -12,9 +12,9 @@ import { useReviewStore } from "./components/reviewStore";
 import Magnetic from "./components/magnetic";
 
 const projects = [
-  { imgSrc: "/assets/creation_1.svg", altText: "SIPASTI showcase", logoSrc: "/assets/pupr-logo.svg", name: "SIPASTI", year: "2024", link: "/detailed/sipasti" },
-  { imgSrc: "/assets/creation_2.svg", altText: "BahanbaKu showcase", logoSrc: "/assets/bahanbaku-logo.svg", name: "BahanbaKu", year: "2022", link: "/detailed/bahanbaku" },
-  { imgSrc: "/assets/creation_3.svg", altText: "Coche showcase", logoSrc: "/assets/coche-logo.svg", name: "Coche", year: "2021", link: "/detailed/coche" },
+  { imgSrc: "/assets/ekatalog-hero.png", altText: "SIPASTI showcase", logoSrc: "/assets/pupr-logo.svg", name: "SIPASTI", year: "2024", link: "/detailed/sipasti" },
+  { imgSrc: "/assets/bahanbaku-showcase2.png", altText: "BahanbaKu showcase", logoSrc: "/assets/bahanbaku-logo.svg", name: "BahanbaKu", year: "2022", link: "/detailed/bahanbaku" },
+  { imgSrc: "/assets/coche-hero.png", altText: "Coche showcase", logoSrc: "/assets/coche-logo.svg", name: "Coche", year: "2021", link: "/detailed/coche" },
 ];
 
 const modes = {
