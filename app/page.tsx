@@ -9,6 +9,7 @@ import Footer from "./components/footer";
 import { ArrowLeft, ArrowRight, Linkedin, Sparkles, Workflow } from "lucide-react";
 import Image from "next/image";
 import { useReviewStore } from "./components/reviewStore";
+import Magnetic from "./components/magnetic";
 
 const projects = [
   { imgSrc: "/assets/creation_1.svg", altText: "SIPASTI showcase", logoSrc: "/assets/pupr-logo.svg", name: "SIPASTI", year: "2024", link: "/detailed/sipasti" },
@@ -66,8 +67,12 @@ export default function Home() {
             I build products end-to-end: discovery, UX strategy, visual systems, and production-grade frontend implementation.
           </motion.p>
           <motion.div className="mt-6 flex flex-wrap gap-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }}>
-            <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} href="/#projects" className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">View Case Studies <ArrowRight size={16} /></motion.a>
-            <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} href="mailto:aisfarhan.professional@gmail.com" className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">Book a Chat</motion.a>
+            <Magnetic>
+              <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} href="/#projects" className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">View Case Studies <ArrowRight size={16} /></motion.a>
+            </Magnetic>
+            <Magnetic>
+              <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} href="mailto:aisfarhan.professional@gmail.com" className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">Book a Chat</motion.a>
+            </Magnetic>
           </motion.div>
         </motion.section>
 
@@ -77,15 +82,16 @@ export default function Home() {
             <p className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700">Choose your context so I can highlight what matters most to you:</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {(Object.keys(modes) as Mode[]).map((key) => (
-                <motion.button
-                  key={key}
-                  onClick={() => setMode(key)}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium transition ${mode === key ? "bg-blue-600 text-white" : "ui-subtle text-slate-700"}`}
-                >
-                  {modes[key].label}
-                </motion.button>
+                <Magnetic key={key} range={60} strength={0.25}>
+                  <motion.button
+                    onClick={() => setMode(key)}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`rounded-lg px-4 py-2 text-sm font-medium transition ${mode === key ? "bg-blue-600 text-white" : "ui-subtle text-slate-700"}`}
+                  >
+                    {modes[key].label}
+                  </motion.button>
+                </Magnetic>
               ))}
             </div>
             <AnimatePresence mode="wait">
