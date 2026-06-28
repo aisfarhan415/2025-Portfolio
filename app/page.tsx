@@ -12,9 +12,9 @@ import { useReviewStore } from "./components/reviewStore";
 import Magnetic from "./components/magnetic";
 
 const projects = [
-  { imgSrc: "/assets/ekatalog-hero.png", altText: "SIPASTI showcase", logoSrc: "/assets/pupr-logo.svg", name: "SIPASTI", year: "2024", link: "/detailed/sipasti" },
-  { imgSrc: "/assets/ollama-hero.jpg", altText: "Local Ollama AI Chat Client showcase", logoSrc: "/assets/ollama-logo.jpg", name: "Ollama Chat Client", year: "2025", link: "https://github.com/aisfarhan415/intelligent-oppenheimer" },
-  { imgSrc: "/assets/ai-manager-hero.jpg", altText: "AI Manager Telegram Bot showcase", logoSrc: "/assets/ai-manager-logo.jpg", name: "AI Manager Bot", year: "2025", link: "https://github.com/aisfarhan415/AI-Manager" },
+  { imgSrc: "/assets/ekatalog-hero.svg", altText: "SIPASTI showcase", logoSrc: "/assets/pupr-logo.svg", name: "SIPASTI", year: "2024", link: "/detailed/sipasti" },
+  { imgSrc: "/assets/ollama-hero.svg", altText: "Local Ollama AI Chat Client showcase", logoSrc: "/assets/ollama-logo.svg", name: "Ollama Chat Client", year: "2025", link: "https://github.com/aisfarhan415/intelligent-oppenheimer" },
+  { imgSrc: "/assets/ai-manager-hero.svg", altText: "AI Manager Telegram Bot showcase", logoSrc: "/assets/ai-manager-logo.svg", name: "AI Manager Bot", year: "2025", link: "https://github.com/aisfarhan415/AI-Manager" },
   { imgSrc: "/assets/bahanbaku-showcase2.png", altText: "BahanbaKu showcase", logoSrc: "/assets/bahanbaku-logo.svg", name: "BahanbaKu", year: "2022", link: "/detailed/bahanbaku" },
   { imgSrc: "/assets/coche-hero.png", altText: "Coche showcase", logoSrc: "/assets/coche-logo.svg", name: "Coche", year: "2021", link: "/detailed/coche" },
 ];
