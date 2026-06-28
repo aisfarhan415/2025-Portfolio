@@ -1,0 +1,40 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F1F2B" />
+      <stop offset="50%" stop-color="#061A24" />
+      <stop offset="100%" stop-color="#020E14" />
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14B8A6" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" rx="24" fill="url(#bgGrad)" />
+  
+  <!-- Grid pattern overlay -->
+  <path d="M 0 50 L 800 50 M 0 100 L 800 100 M 0 150 L 800 150 M 0 200 L 800 200 M 0 250 L 800 250 M 0 300 L 800 300 M 0 350 L 800 350 M 0 400 L 800 400 M 0 450 L 800 450" stroke="#FFFFFF" stroke-opacity="0.03" stroke-width="1" />
+  <path d="M 100 0 L 100 500 M 200 0 L 200 500 M 300 0 L 300 500 M 400 0 L 400 500 M 500 0 L 500 500 M 600 0 L 600 500 M 700 0 L 700 500" stroke="#FFFFFF" stroke-opacity="0.03" stroke-width="1" />
+  
+  <!-- Central Icon (Lotus/Zen Flower & Timer Rings) -->
+  <g transform="translate(400, 220)" filter="url(#glow)">
+    <!-- Timer Ring -->
+    <circle cx="0" cy="0" r="70" stroke="url(#iconGrad)" stroke-width="4" stroke-dasharray="350 100" stroke-linecap="round" fill="#000000" fill-opacity="0.2" />
+    <circle cx="0" cy="0" r="60" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1" />
+    
+    <!-- Minimalist Lotus Flower shapes -->
+    <path d="M 0 -35 C -15 -10 -25 15 0 35 C 25 15 15 -10 0 -35 Z" fill="url(#iconGrad)" fill-opacity="0.8" />
+    <path d="M 0 -15 C -30 0 -35 25 -10 35 C 0 35 -10 20 0 -15 Z" fill="url(#iconGrad)" fill-opacity="0.5" />
+    <path d="M 0 -15 C 30 0 35 25 10 35 C 0 35 10 20 0 -15 Z" fill="url(#iconGrad)" fill-opacity="0.5" />
+  </g>
+  
+  <!-- Text Label -->
+  <text x="400" y="380" font-family="'Outfit', 'Inter', sans-serif" font-size="24" font-weight="bold" fill="#F8FAFC" text-anchor="middle" letter-spacing="0.05em">ZENFOCUS DASHBOARD</text>
+  <text x="400" y="410" font-family="'JetBrains Mono', monospace" font-size="14" fill="#94A3B8" text-anchor="middle" letter-spacing="0.1em">PRODUCTIVITY • POMODORO • AUDIO MIXER</text>
+</svg>
