@@ -76,6 +76,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
             href={project.link}
             className="ui-surface group relative block overflow-hidden rounded-2xl h-full w-full"
             style={{ transformStyle: "preserve-3d" }}
+            {...(project.link.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           >
             <div className="relative h-52 overflow-hidden border-b border-slate-100 bg-slate-50" style={{ transform: "translateZ(20px)" }}>
               <Image
