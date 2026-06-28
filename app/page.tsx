@@ -51,8 +51,15 @@ export default function Home() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 pb-12 pt-28 md:px-8 md:pt-32"
+        className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 pb-12 pt-28 md:px-8 md:pt-32"
       >
+        {/* Technical decorative details in page margins */}
+        <div className="absolute top-48 left-[-80px] hidden xl:flex items-center gap-2 text-[9px] code-font text-slate-400 select-none uppercase tracking-[0.2em] pointer-events-none rotate-90 origin-left">
+          <span>PORTFOLIO_SYSTEM // CONSOLE_ACTIVE</span>
+        </div>
+        <div className="absolute bottom-48 right-[-80px] hidden xl:flex items-center gap-2 text-[9px] code-font text-slate-400 select-none uppercase tracking-[0.2em] pointer-events-none -rotate-90 origin-right">
+          <span>SECURE_CONNECTION // JKT_CORE_NODE</span>
+        </div>
         <motion.section id="hero" variants={item} whileHover={{ y: -2 }} className="ui-fancy rounded-3xl p-6 md:p-10">
           {/* Top cockpit status bar */}
           <div className="mb-6 flex flex-wrap items-center justify-between border-b border-slate-300/40 pb-4 text-[10px] uppercase tracking-wider text-slate-500 code-font">
@@ -182,7 +189,7 @@ export default function Home() {
 
         <motion.section id="about" variants={item} className="grid gap-5 md:grid-cols-3">
           {[
-            { label: "Years in Product", value: "1+", note: "UI/UX + FE delivery" },
+            { label: "Years in Product", value: "2+", note: "UI/UX + FE delivery" },
             { label: "Projects Shipped", value: "20+", note: "Web products and systems" },
             { label: "Cross-team Collaborations", value: "10+", note: "Designer, PM, engineer" },
           ].map((stat) => (

@@ -24,6 +24,9 @@ body {
   color: var(--text);
   font-family: 'Plus Jakarta Sans', sans-serif;
   background: var(--bg);
+  background-image: 
+    radial-gradient(rgba(148, 163, 184, 0.15) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
 }
 
 h1, h2, h3, h4 {
