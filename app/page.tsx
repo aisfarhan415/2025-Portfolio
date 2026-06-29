@@ -10,6 +10,7 @@ import { ArrowLeft, ArrowRight, Linkedin, Sparkles, Workflow } from "lucide-reac
 import Image from "next/image";
 import { useReviewStore } from "./components/reviewStore";
 import Magnetic from "./components/magnetic";
+import { playSound } from "./utils/audio";
 
 const projects = [
   { imgSrc: "/assets/ollama-hero.svg", altText: "Local Ollama AI Chat Client showcase", logoSrc: "/assets/ollama-logo.svg", name: "Ollama Chat Client", year: "2025", link: "https://github.com/aisfarhan415/intelligent-oppenheimer" },
@@ -89,10 +90,28 @@ export default function Home() {
               </motion.p>
               <motion.div className="mt-6 flex flex-wrap gap-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }}>
                 <Magnetic>
-                  <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} href="/#projects" className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">View Case Studies <ArrowRight size={16} /></motion.a>
+                  <motion.a 
+                    whileHover={{ scale: 1.04 }} 
+                    whileTap={{ scale: 0.98 }} 
+                    onMouseEnter={() => playSound.playHover()}
+                    onClick={() => playSound.playClick()}
+                    href="/#projects" 
+                    className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+                  >
+                    View Case Studies <ArrowRight size={16} />
+                  </motion.a>
                 </Magnetic>
                 <Magnetic>
-                  <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} href="mailto:aisfarhan.professional@gmail.com" className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100/50">Book a Chat</motion.a>
+                  <motion.a 
+                    whileHover={{ scale: 1.04 }} 
+                    whileTap={{ scale: 0.98 }} 
+                    onMouseEnter={() => playSound.playHover()}
+                    onClick={() => playSound.playClick()}
+                    href="mailto:aisfarhan.professional@gmail.com" 
+                    className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100/50"
+                  >
+                    Book a Chat
+                  </motion.a>
                 </Magnetic>
               </motion.div>
             </div>
@@ -154,7 +173,11 @@ export default function Home() {
               {(Object.keys(modes) as Mode[]).map((key) => (
                 <Magnetic key={key} range={60} strength={0.25}>
                   <motion.button
-                    onClick={() => setMode(key)}
+                    onClick={() => {
+                      playSound.playClick();
+                      setMode(key);
+                    }}
+                    onMouseEnter={() => playSound.playHover()}
                     whileHover={{ y: -1 }}
                     whileTap={{ scale: 0.98 }}
                     className={`rounded-lg px-4 py-2 text-xs font-semibold transition ${mode === key ? "bg-slate-900 text-white shadow-inner" : "bg-white/40 text-slate-700 shadow-sm border border-white/50 hover:bg-white/60"}`}
@@ -309,10 +332,26 @@ export default function Home() {
                 </div>
 
                 <div className="flex gap-2">
-                  <button onClick={prevReview} className="rounded-xl border border-slate-200 bg-white p-2.5 text-slate-600 hover:bg-slate-50 transition" aria-label="Previous review">
+                  <button 
+                    onClick={() => {
+                      playSound.playClick();
+                      prevReview();
+                    }} 
+                    onMouseEnter={() => playSound.playHover()}
+                    className="rounded-xl border border-slate-200 bg-white p-2.5 text-slate-600 hover:bg-slate-50 transition" 
+                    aria-label="Previous review"
+                  >
                     <ArrowLeft size={16} />
                   </button>
-                  <button onClick={nextReview} className="rounded-xl border border-slate-200 bg-white p-2.5 text-slate-600 hover:bg-slate-50 transition" aria-label="Next review">
+                  <button 
+                    onClick={() => {
+                      playSound.playClick();
+                      nextReview();
+                    }} 
+                    onMouseEnter={() => playSound.playHover()}
+                    className="rounded-xl border border-slate-200 bg-white p-2.5 text-slate-600 hover:bg-slate-50 transition" 
+                    aria-label="Next review"
+                  >
                     <ArrowRight size={16} />
                   </button>
                 </div>

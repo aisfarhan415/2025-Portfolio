@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { playSound } from "../utils/audio";
 
 type Project = {
   imgSrc: string;
@@ -45,6 +46,10 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
     glareOpacity.set(0);
   };
 
+  const handleMouseEnter = () => {
+    playSound.playHover();
+  };
+
   const glareBg = useTransform(
     [glareX, glareY],
     ([gx, gy]) => `radial-gradient(circle at ${gx}% ${gy}%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 50%)`
@@ -76,6 +81,8 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
             href={project.link}
             className="ui-surface group relative block overflow-hidden rounded-2xl h-full w-full"
             style={{ transformStyle: "preserve-3d" }}
+            onMouseEnter={handleMouseEnter}
+            onClick={() => playSound.playClick()}
             {...(project.link.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           >
             <div className="relative h-52 overflow-hidden border-b border-slate-100 bg-slate-50" style={{ transform: "translateZ(20px)" }}>
