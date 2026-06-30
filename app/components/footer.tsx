@@ -3,27 +3,48 @@
 import Link from "next/link";
 import { useState } from "react";
 import { playSound } from "../utils/audio";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, XCircle } from "lucide-react";
 
 export default function Footer() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     
     playSound.playClick();
     setStatus("sending");
     
-    // Simulate API call
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-      
-      // Reset back to idle after 3 seconds
-      setTimeout(() => setStatus("idle"), 3000);
-    }, 1200);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/aisfarhan.professional@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`
+        })
+      });
+
+      const data = await response.json();
+      if (response.ok && data.success === "true") {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        
+        // Reset back to idle after 5 seconds
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("error");
+    }
   };
 
   return (
@@ -72,9 +93,25 @@ export default function Footer() {
               
               {status === "success" ? (
                 <div className="py-12 flex flex-col items-center justify-center text-center space-y-3">
-                  <CheckCircle2 size={40} className="text-emerald-500" />
+                  <CheckCircle2 size={40} className="text-emerald-500 animate-pulse" />
                   <h3 className="font-bold text-slate-900 text-lg">Message Transmission Complete</h3>
                   <p className="text-xs text-slate-500 code-font">STATUS: 200 OK // SENT_SUCCESS</p>
+                </div>
+              ) : status === "error" ? (
+                <div className="py-12 flex flex-col items-center justify-center text-center space-y-3">
+                  <XCircle size={40} className="text-rose-500 animate-bounce" />
+                  <h3 className="font-bold text-slate-900 text-lg">Transmission Interrupted</h3>
+                  <p className="text-xs text-rose-500 code-font">STATUS: ERROR // HANDSHAKE_FAILED</p>
+                  <button 
+                    onClick={() => {
+                      setStatus("idle");
+                      playSound.playClick();
+                    }}
+                    onMouseEnter={() => playSound.playHover()}
+                    className="mt-3 px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-semibold hover:bg-slate-800 transition"
+                  >
+                    Retry Handshake
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
