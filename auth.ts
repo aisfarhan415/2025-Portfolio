@@ -4,6 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 const allowedEmail = (
   process.env.CONTROL_ROOM_ALLOWED_EMAIL ?? "aisfarhan415@gmail.com"
 ).toLowerCase();
+const controlRoomEnabled = process.env.CONTROL_ROOM_ENABLED === "true";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   trustHost: true,
@@ -37,6 +38,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       ) {
         return true;
       }
+
+      if (!controlRoomEnabled) return false;
 
       return session?.user?.email?.toLowerCase() === allowedEmail;
     },

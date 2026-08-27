@@ -12,6 +12,8 @@ needed:
 - `AUTH_SECRET`: a strong random secret.
 - `CONTROL_ROOM_PASSWORD`: a long private password for the single operator.
 - `CONTROL_ROOM_ALLOWED_EMAIL`: `aisfarhan415@gmail.com`.
+- `CONTROL_ROOM_ENABLED`: set to `true` to open the room; leave `false` to keep
+  it locked.
 
 The Auth.js configuration trusts the forwarded host because Vercel terminates
 HTTPS in front of the Next.js application. Do not reuse this configuration on
