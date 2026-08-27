@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
+import Credentials from "next-auth/providers/credentials";
 
 const allowedEmail = (
   process.env.CONTROL_ROOM_ALLOWED_EMAIL ?? "aisfarhan415@gmail.com"
@@ -7,13 +7,25 @@ const allowedEmail = (
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   trustHost: true,
-  providers: [Google],
+  session: { strategy: "jwt" },
+  providers: [
+    Credentials({
+      name: "Control room password",
+      credentials: { password: { label: "Password", type: "password" } },
+      authorize(credentials) {
+        const password = process.env.CONTROL_ROOM_PASSWORD;
+        if (!password || credentials?.password !== password) return null;
+        return { id: "control-room-owner", email: allowedEmail, name: "Ais Farhan" };
+      },
+    }),
+  ],
   pages: {
     signIn: "/control-room/login",
   },
   callbacks: {
-    signIn({ profile }) {
-      return profile?.email?.toLowerCase() === allowedEmail;
+    signIn({ account, profile, user }) {
+      if (account?.provider === "credentials") return true;
+      return (profile?.email ?? user?.email)?.toLowerCase() === allowedEmail;
     },
     authorized({ auth: session, request }) {
       const { pathname } = request.nextUrl;
