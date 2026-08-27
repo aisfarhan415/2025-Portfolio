@@ -217,12 +217,12 @@ export default function ControlRoomClient({ email }: { email: string }) {
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
                 rows={1}
-                disabled
-                placeholder="Agent gateway must be connected before sending a task…"
-                className="min-h-[38px] flex-1 resize-none bg-transparent py-2 text-xs text-slate-300 outline-none placeholder:text-slate-600 disabled:cursor-not-allowed"
+                placeholder="Draft a task… gateway connection required to send"
+                className="min-h-[38px] flex-1 resize-none bg-transparent py-2 text-xs text-slate-300 outline-none placeholder:text-slate-600"
               />
               <button
                 disabled
+                title="The signed agent gateway is not connected yet"
                 className="rounded-xl bg-white/5 px-4 py-2.5 text-[10px] font-semibold text-slate-600"
               >
                 SEND
