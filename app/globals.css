@@ -247,3 +247,157 @@ body.theme-glass #detailed > div:first-child,
 body.theme-glass #detailed > div:nth-child(2) {
   display: none !important;
 }
+
+/* ==========================================
+   PRIVATE AI CONTROL ROOM
+   ========================================== */
+.control-shell {
+  --control-bg: #060913;
+  --control-panel: rgba(11, 16, 28, 0.9);
+  --control-line: rgba(148, 163, 184, 0.11);
+  position: relative;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(34, 211, 238, 0.09), transparent 28rem),
+    radial-gradient(circle at 88% 82%, rgba(139, 92, 246, 0.08), transparent 30rem),
+    var(--control-bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.control-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.055) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.control-topbar {
+  background: rgba(6, 9, 19, 0.82);
+  backdrop-filter: blur(20px);
+}
+
+.control-panel {
+  border: 1px solid var(--control-line);
+  background: linear-gradient(145deg, rgba(16, 23, 39, 0.92), rgba(8, 12, 22, 0.94));
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(24px);
+}
+
+.control-kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.19em;
+  color: #64748b;
+}
+
+.control-icon {
+  color: #67e8f9;
+  border: 1px solid rgba(103, 232, 249, 0.15);
+  background: linear-gradient(145deg, rgba(34, 211, 238, 0.13), rgba(59, 130, 246, 0.05));
+  box-shadow: inset 0 0 20px rgba(34, 211, 238, 0.04);
+}
+
+.control-primary {
+  color: #03131a;
+  background: linear-gradient(135deg, #67e8f9, #22d3ee);
+  box-shadow: 0 12px 30px rgba(34, 211, 238, 0.16);
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.control-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.control-agent {
+  border: 1px solid transparent;
+  background: transparent;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.control-agent:hover {
+  background: rgba(255, 255, 255, 0.025);
+  transform: translateX(2px);
+}
+
+.control-agent-active {
+  border-color: rgba(103, 232, 249, 0.12);
+  background: linear-gradient(100deg, rgba(34, 211, 238, 0.07), rgba(255, 255, 255, 0.015));
+}
+
+.agent-orb,
+.agent-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.agent-orb {
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+}
+
+.agent-hero {
+  position: relative;
+  z-index: 2;
+  width: 72px;
+  height: 72px;
+  border-radius: 24px;
+}
+
+.agent-orb-cyan { color: #67e8f9; border-color: rgba(103, 232, 249, 0.18); background: rgba(34, 211, 238, 0.07); }
+.agent-orb-emerald { color: #6ee7b7; border-color: rgba(110, 231, 183, 0.18); background: rgba(16, 185, 129, 0.07); }
+.agent-orb-violet { color: #c4b5fd; border-color: rgba(196, 181, 253, 0.18); background: rgba(139, 92, 246, 0.07); }
+
+.control-pulse {
+  position: absolute;
+  inset: -24px;
+  border-radius: 36px;
+  border: 1px solid rgba(103, 232, 249, 0.1);
+  animation: control-pulse 2.8s ease-out infinite;
+}
+
+@keyframes control-pulse {
+  0% { opacity: 0.8; transform: scale(0.76); }
+  100% { opacity: 0; transform: scale(1.28); }
+}
+
+.control-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 9px;
+}
+
+.control-command {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(2, 6, 23, 0.45);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+body:has(.control-shell) > img,
+body:has(.control-shell) > .custom-cursor {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control-pulse { animation: none; }
+  .control-primary,
+  .control-agent { transition: none; }
+}
