@@ -30,7 +30,7 @@ export default async function ControlRoomLogin() {
         </h1>
         <p className="mt-3 text-sm leading-6 text-slate-400">
           This console is invisible to portfolio visitors and accepts one
-          authorized Google identity only.
+          authorized operator password only.
         </p>
 
         <div className="mt-8 space-y-3 rounded-2xl border border-white/10 bg-white/[0.025] p-4">
@@ -46,13 +46,18 @@ export default async function ControlRoomLogin() {
 
         <form
           className="mt-8"
-          action={async () => {
+          action={async (formData: FormData) => {
             "use server";
-            await signIn("google", { redirectTo: "/control-room" });
+            await signIn("credentials", {
+              password: formData.get("password"),
+              redirectTo: "/control-room",
+            });
           }}
         >
+          <label htmlFor="password" className="sr-only">Control room password</label>
+          <input id="password" name="password" type="password" required autoComplete="current-password" placeholder="Enter your private password" className="w-full rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3.5 text-sm text-white outline-none placeholder:text-slate-600 focus:border-cyan-300/50" />
           <button className="control-primary flex w-full items-center justify-center gap-3 rounded-2xl px-5 py-3.5 text-sm font-semibold">
-            Continue with Google
+            Unlock control room
           </button>
         </form>
 
